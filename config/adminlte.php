@@ -251,33 +251,17 @@ return [
         ],
         ['header' => 'PARTIES DU SITE'],
         [
-            'text'    => 'Navbar',
-            'icon'    => 'fas fa-cog fa-spin mr-2',
-            'submenu' => [
-                [
-                    'text'    => 'Logo',
-                    'url'     => '/navbar-logo',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Links',
-                    'url'     => '/navbar-links',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-            ],
-        ],
-        [
             'text'    => 'Home',
             'icon'    => 'fas fa-cog fa-spin mr-2',
             'submenu' => [
                 [
                     'text'    => 'Menu',
-                    'url'     => '#',
+                    'url'     => '/menu',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
                     'text'    => 'Bannière',
-                    'url'     => '#',
+                    'url'     => '/banniere',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [

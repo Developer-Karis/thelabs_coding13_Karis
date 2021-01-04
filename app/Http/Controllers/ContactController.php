@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Navbar;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,7 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('labs.contact');
+        $navbars = Navbar::all();
+        return view('labs.contact', compact('navbars'));
     }
 
     /**

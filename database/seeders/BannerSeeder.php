@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class NavbarSeeder extends Seeder
+class BannerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,11 @@ class NavbarSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('navbars')->insert([
-            'link1' => 'Home',
-            'link2' => 'Services',
-            'link3' => 'Blog',
-            'link4' => 'Contact'
+        DB::table('banners')->insert([
+            [
+                'logo' => 'img/logo.png',
+                'slogan' => 'Get your freebie template now!'
+            ],
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
+use App\Models\Navbar;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -14,7 +15,8 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        return view('labs.blog-post');
+        $navbars = Navbar::all();
+        return view('labs.blog-post', compact('navbars'));
     }
 
     /**

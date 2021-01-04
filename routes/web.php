@@ -43,6 +43,7 @@ Route::get('/blog-post', [BlogPostController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 
 // AdminLte
-Route::get('/navbar-logo', [NavbarController::class, 'index']);
-Route::post('/update-logo', [NavbarController::class, 'update']);
-Route::get('/navbar-links', [NavbarController::class, 'links']);
+Route::get('/menu', [NavbarController::class, 'index']);
+Route::post('/update-links/{id}', [NavbarController::class, 'updateLinks']);
+Route::get('/banniere', [HomePageController::class, 'adminShowBanniere']);
+

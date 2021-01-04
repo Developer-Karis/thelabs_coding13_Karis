@@ -1,0 +1,54 @@
+@extends('adminlte::page')
+
+@section('title', 'AdminLTE')
+
+@section('content_header')
+<div class="mt-5 mb-5">
+    <h1 class="py-3 bg-dark w-25 m-auto text-center shadow mb-5 rounded">Links</h1>
+</div>
+@stop
+
+@section('content')
+<div class="container">
+    @if(Session::has('success'))
+    <div class="alert alert-success w-50 m-auto">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Modification effectuée avec Succès !</strong> {{ Session::get('message', '') }}
+    </div>
+    @endif
+    <div class="card shadow mb-5 mt-3 bg-white rounded card-warning" style="width: 50%; margin: auto;">
+        <div class="card-header">
+            <h3 class="card-title font-weight-bold">Change name Links</h3>
+        </div>
+
+        <form action="/update-links/{{$navbars[0]->id}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="card-body text-center">
+                <div class="form-group">
+                    <label for="">Link 1</label>
+                    <input type="text" class="form-control m-auto" style="width: max-content;" name="link1"
+                        value="{{$navbars[0]->link1}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Link 2</label>
+                    <input type="text" class="form-control m-auto" style="width: max-content;" name="link2"
+                        value="{{$navbars[0]->link2}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Link 3</label>
+                    <input type="text" class="form-control m-auto" style="width: max-content;" name="link3"
+                        value="{{$navbars[0]->link3}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Link 4</label>
+                    <input type="text" class="form-control m-auto" style="width: max-content;" name="link4"
+                        value="{{$navbars[0]->link4}}">
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn bg-warning font-weight-bold">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+@stop

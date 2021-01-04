@@ -41,19 +41,19 @@
 
 	<!-- Header section -->
 	<header class="header-section">
-		<div class="logo" style="padding-top: 8px;">
-			@foreach ($logo as $item)
-			<img src="{{asset('images/'.$item->logo)}}" alt="" height="75"><!-- Logo -->
-			@endforeach
+		<div class="logo">
+			<img src="img/logo.png" alt=""><!-- Logo -->
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
 		<nav>
 			<ul class="menu-list">
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="/services">Services</a></li>
-				<li><a href="/blog">Blog</a></li>
-				<li><a href="/contact">Contact</a></li>
+				@foreach ($navbars as $item)
+				<li class="active"><a href="/">{{$item->link1}}</a></li>
+				<li><a href="/services">{{$item->link2}}</a></li>
+				<li><a href="/blog">{{$item->link3}}</a></li>
+				<li><a href="/contact">{{$item->link4}}</a></li>
+				@endforeach
 				<!-- Authentication Links -->
 				@guest
 				@if (Route::has('login'))

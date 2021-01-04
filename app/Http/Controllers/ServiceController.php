@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Navbar;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -14,7 +15,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('labs.services');
+        $navbars = Navbar::all();
+        return view('labs.services', compact('navbars'));
     }
 
     /**

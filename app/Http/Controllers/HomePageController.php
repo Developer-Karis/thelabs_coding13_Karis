@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\HomePage;
 use App\Models\Navbar;
+use App\Models\Banner;
+use App\Models\BannerCarous;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -15,8 +17,8 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        $logo = Navbar::all();
-        return view('labs.home', compact('logo'));
+        $navbars = Navbar::all();
+        return view('labs.home', compact('navbars'));
     }
 
     /**
@@ -83,5 +85,12 @@ class HomePageController extends Controller
     public function destroy(HomePage $homePage)
     {
         //
+    }
+
+    public function adminShowBanniere(HomePage $homePage) 
+    {
+        $banners = Banner::all();
+        $bannersCarous = BannerCarous::all();
+        return view('admin.home.banniere', compact('banners', 'bannersCarous'));
     }
 }

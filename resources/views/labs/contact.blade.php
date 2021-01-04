@@ -47,10 +47,12 @@
 		<div class="responsive"><i class="fa fa-bars"></i></div>
 		<nav>
 			<ul class="menu-list">
-				<li><a href="/">Home</a></li>
-				<li><a href="/services">Services</a></li>
-				<li><a href="/blog">Blog</a></li>
-				<li class="active"><a href="/contact">Contact</a></li>
+				@foreach ($navbars as $item)
+				<li><a href="/">{{$item->link1}}</a></li>
+				<li><a href="/services">{{$item->link2}}</a></li>
+				<li><a href="/blog">{{$item->link3}}</a></li>
+				<li class="active"><a href="/contact">{{$item->link4}}</a></li>
+				@endforeach
 				<!-- Authentication Links -->
 				@guest
 				@if (Route::has('login'))

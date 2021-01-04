@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Navbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class NavbarController extends Controller
 {
@@ -15,7 +16,7 @@ class NavbarController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('admin.navbar.navbar-logo', compact('navbars'));
+        return view('admin.home.menu', compact('navbars'));
     }
 
     /**
@@ -70,11 +71,7 @@ class NavbarController extends Controller
      */
     public function update(Request $request, Navbar $navbar)
     {
-        $updateLogo = new Navbar();
-        $updateLogo->logo = $request->file('logo')->hashName();
-        $updateLogo->save();
-        $request->file('logo')->storePublicly('images', 'public');
-        return redirect()->back();
+        //
     }
 
     /**
@@ -92,5 +89,17 @@ class NavbarController extends Controller
     {
         $navbars = Navbar::all();
         return view('admin.navbar.navbar-links', compact('navbars'));
+    }
+
+    public function updateLinks(Navbar $navbar, Request $request, $id) 
+    {
+        $updateLinks = Navbar::find($id);
+        $updateLinks->link1 = $request->link1;
+        $updateLinks->link2 = $request->link2;
+        $updateLinks->link3 = $request->link3;
+        $updateLinks->link4 = $request->link4;
+        $updateLinks->save();
+        Session::flash('success');
+        return redirect()->back();
     }
 }
