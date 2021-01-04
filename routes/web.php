@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\NavbarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,6 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('labs.home');
-});
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
@@ -28,6 +26,9 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+// Home Page
+Route::get('/', [HomePageController::class, 'index']);
 
 // Service
 Route::get('/services', [ServiceController::class, 'index']);
@@ -40,3 +41,8 @@ Route::get('/blog-post', [BlogPostController::class, 'index']);
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index']);
+
+// AdminLte
+Route::get('/navbar-logo', [NavbarController::class, 'index']);
+Route::post('/update-logo', [NavbarController::class, 'update']);
+Route::get('/navbar-links', [NavbarController::class, 'links']);

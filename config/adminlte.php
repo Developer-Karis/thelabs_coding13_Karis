@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Admin</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -235,77 +235,222 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Home',
+            'url'  => '/',
+            'icon' => 'fas fa-home mr-2',
         ],
-        ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-user mr-2',
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-lock mr-2',
         ],
+        ['header' => 'PARTIES DU SITE'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Navbar',
+            'icon'    => 'fas fa-cog fa-spin mr-2',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Logo',
+                    'url'     => '/navbar-logo',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'    => 'Links',
+                    'url'     => '/navbar-links',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Home',
+            'icon'    => 'fas fa-cog fa-spin mr-2',
+            'submenu' => [
+                [
+                    'text'    => 'Menu',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Bannière',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Services Rapides',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Présentation',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Vidéo',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Testimonials',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Service',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Team',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Ready?',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Infos contact / Formulaire',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+            ],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'    => 'Services',
+            'icon'    => 'fas fa-cog fa-spin mr-2',
+            'submenu' => [
+                [
+                    'text'    => 'Menu',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Bannière',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Services',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Services Primés',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Blog Rapides',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Newsletter',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Formulaire de contact',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Infos contact',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+            ],
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'    => 'Blog',
+            'icon'    => 'fas fa-cog fa-spin mr-2',
+            'submenu' => [
+                [
+                    'text'    => 'Menu',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Bannière',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Articles',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Recherche',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Catégories',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Tags',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+            ],
         ],
+        [
+            'text'    => 'Contact',
+            'icon'    => 'fas fa-cog fa-spin mr-2',
+            'submenu' => [
+                [
+                    'text'    => 'Menu',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Bannière',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Google Map',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Formulaire de contact',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Infos Contact',
+                    'url'     => '#',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+            ],
+        ],
+        // ['header' => 'labels'],
+        // [
+        //     'text'       => 'important',
+        //     'icon_color' => 'red',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*

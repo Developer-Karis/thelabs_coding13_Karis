@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Labs - Design Studio</title>
 	<meta charset="UTF-8">
@@ -7,18 +8,18 @@
 	<meta name="keywords" content="lab, onepage, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	<link href="img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/flaticon.css"/>
-	<link rel="stylesheet" href="css/magnific-popup.css"/>
-	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/flaticon.css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" />
+	<link rel="stylesheet" href="css/owl.carousel.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
 
 	<!--[if lt IE 9]>
@@ -27,6 +28,7 @@
 	<![endif]-->
 
 </head>
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -39,8 +41,10 @@
 
 	<!-- Header section -->
 	<header class="header-section">
-		<div class="logo">
-			<img src="img/logo.png" alt=""><!-- Logo -->
+		<div class="logo" style="padding-top: 8px;">
+			@foreach ($logo as $item)
+			<img src="{{asset('images/'.$item->logo)}}" alt="" height="75"><!-- Logo -->
+			@endforeach
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
@@ -50,6 +54,34 @@
 				<li><a href="/services">Services</a></li>
 				<li><a href="/blog">Blog</a></li>
 				<li><a href="/contact">Contact</a></li>
+				<!-- Authentication Links -->
+				@guest
+				@if (Route::has('login'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+				</li>
+				@endif
+
+				@if (Route::has('register'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+				</li>
+				@endif
+				@else
+				<li class="nav-item dropdown">
+					@if (Auth::user()->role_id == 1)
+					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
+					@endif
+					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						{{ __('Logout') }}
+					</a>
+
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
+				</li>
+				@endguest
 			</ul>
 		</nav>
 	</header>
@@ -87,7 +119,8 @@
 								<i class="flaticon-023-flask"></i>
 							</div>
 							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 					<!-- single card -->
@@ -97,7 +130,8 @@
 								<i class="flaticon-011-compass"></i>
 							</div>
 							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 					<!-- single card -->
@@ -107,7 +141,8 @@
 								<i class="flaticon-037-idea"></i>
 							</div>
 							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -124,10 +159,16 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequat ante ac congue. Quisque porttitor porttitor tempus. Donec maximus ipsum non ornare vporttitor porttitorestibulum. Sed libero nibh, feugiat at enim id, bibendum sollicitudin arcu.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+							elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequat ante
+							ac congue. Quisque porttitor porttitor tempus. Donec maximus ipsum non ornare vporttitor
+							porttitorestibulum. Sed libero nibh, feugiat at enim id, bibendum sollicitudin arcu.</p>
 					</div>
 					<div class="col-md-6">
-						<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. Nam convallis vel erat id dictum. Sed ut risus in orci convallis viverra a eget nisi. Aenean pellentesque elit vitae eros dignissim ultrices. Quisque porttitor porttitorlaoreet vel risus et luctus.</p>
+						<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel
+							suscipit dolor. Donec elementum velit a orci facilisis rutrum. Nam convallis vel erat id
+							dictum. Sed ut risus in orci convallis viverra a eget nisi. Aenean pellentesque elit vitae
+							eros dignissim ultrices. Quisque porttitor porttitorlaoreet vel risus et luctus.</p>
 					</div>
 				</div>
 				<div class="text-center mt60">
@@ -163,7 +204,9 @@
 						<!-- single testimonial -->
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.
+							</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="img/avatar/01.jpg" alt="">
@@ -177,7 +220,9 @@
 						<!-- single testimonial -->
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.
+							</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="img/avatar/02.jpg" alt="">
@@ -191,7 +236,9 @@
 						<!-- single testimonial -->
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.
+							</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="img/avatar/01.jpg" alt="">
@@ -205,7 +252,9 @@
 						<!-- single testimonial -->
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.
+							</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="img/avatar/02.jpg" alt="">
@@ -219,7 +268,9 @@
 						<!-- single testimonial -->
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.
+							</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="img/avatar/01.jpg" alt="">
@@ -233,7 +284,9 @@
 						<!-- single testimonial -->
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.
+							</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="img/avatar/02.jpg" alt="">
@@ -267,7 +320,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -279,7 +333,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -291,7 +346,8 @@
 						</div>
 						<div class="service-text">
 							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -303,7 +359,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Social Media</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -315,7 +372,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Brainstorming</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -327,7 +385,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Documented</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -339,7 +398,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Responsive</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -351,7 +411,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Retina ready</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -363,7 +424,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Ultra modern</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -381,7 +443,7 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="section-title">
-				<h2>Get in <span>the Lab</span> and  meet the team</h2>
+				<h2>Get in <span>the Lab</span> and meet the team</h2>
 			</div>
 			<div class="row">
 				<!-- single member -->
@@ -442,7 +504,8 @@
 					<div class="section-title left">
 						<h2>Contact us</h2>
 					</div>
-					<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
+					<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel
+						suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
 					<h3 class="mt60">Main Office</h3>
 					<p class="con-item">C/ Libertad, 34 <br> 05200 Arévalo </p>
 					<p class="con-item">0034 37483 2445 322</p>
@@ -489,4 +552,5 @@
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Labs - Design Studio</title>
 	<meta charset="UTF-8">
@@ -7,17 +8,17 @@
 	<meta name="keywords" content="lab, onepage, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	<link href="img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,600" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/flaticon.css"/>
-	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/flaticon.css" />
+	<link rel="stylesheet" href="css/owl.carousel.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
 
 	<!--[if lt IE 9]>
@@ -26,6 +27,7 @@
 	<![endif]-->
 
 </head>
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -49,6 +51,34 @@
 				<li><a href="/services">Services</a></li>
 				<li class="active"><a href="/blog">Blog</a></li>
 				<li><a href="/contact">Contact</a></li>
+				<!-- Authentication Links -->
+				@guest
+				@if (Route::has('login'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+				</li>
+				@endif
+
+				@if (Route::has('register'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+				</li>
+				@endif
+				@else
+				<li class="nav-item dropdown">
+					@if (Auth::user()->role_id == 1)
+					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
+					@endif
+					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						{{ __('Logout') }}
+					</a>
+
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
+				</li>
+				@endguest
 			</ul>
 		</nav>
 	</header>
@@ -92,9 +122,22 @@
 								<a href="">Design, Inspiration</a>
 								<a href="">2 Comments</a>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo, justo ipsum rutrum mauris, sit amet egestas metus quam sed dolor. Sed consectetur, dui sed sollicitudin eleifend, arcu neque egestas lectus, sagittis viverra justo massa ut sapien. Aenean viverra ornare mauris eget lobortis. Cras vulputate elementum magna, tincidunt pharetra erat condimentum sit amet. Maecenas vitae ligula pretium, convallis magna eu, ultricies quam. In hac habitasse platea dictumst. </p>
-							<p>Fusce vel tempus nunc. Phasellus et risus eget sapien suscipit efficitur. Suspendisse iaculis purus ornare urna egestas imperdiet. Nulla congue consectetur placerat. Integer sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque condimentum convallis. Sed ac mollis sem. </p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis
+								ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat
+								augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam
+								tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget
+								quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo,
+								justo ipsum rutrum mauris, sit amet egestas metus quam sed dolor. Sed consectetur, dui
+								sed sollicitudin eleifend, arcu neque egestas lectus, sagittis viverra justo massa ut
+								sapien. Aenean viverra ornare mauris eget lobortis. Cras vulputate elementum magna,
+								tincidunt pharetra erat condimentum sit amet. Maecenas vitae ligula pretium, convallis
+								magna eu, ultricies quam. In hac habitasse platea dictumst. </p>
+							<p>Fusce vel tempus nunc. Phasellus et risus eget sapien suscipit efficitur. Suspendisse
+								iaculis purus ornare urna egestas imperdiet. Nulla congue consectetur placerat. Integer
+								sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque
+								condimentum convallis. Sed ac mollis sem. </p>
 						</div>
 						<!-- Post Author -->
 						<div class="author">
@@ -103,7 +146,9 @@
 							</div>
 							<div class="author-info">
 								<h2>Lore Williams, <span>Author</span></h2>
-								<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
+								<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut
+									hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget
+									tristique. </p>
 							</div>
 						</div>
 						<!-- Post Comments -->
@@ -116,7 +161,9 @@
 									</div>
 									<div class="commetn-text">
 										<h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-										<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
+										<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero.
+											Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis
+											ante eget tristique. </p>
 									</div>
 								</li>
 								<li>
@@ -125,7 +172,9 @@
 									</div>
 									<div class="commetn-text">
 										<h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-										<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
+										<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero.
+											Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis
+											ante eget tristique. </p>
 									</div>
 								</li>
 							</ul>
@@ -204,7 +253,9 @@
 						<h2 class="widget-title">Quote</h2>
 						<div class="quote">
 							<span class="quotation">‘​‌‘​‌</span>
-							<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
+							<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut
+								hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.
+								Sed lacinia turpis at ultricies vestibulum.</p>
 						</div>
 					</div>
 					<!-- Single widget -->
@@ -254,4 +305,5 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>

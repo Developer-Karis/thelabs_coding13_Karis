@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Labs - Design Studio</title>
 	<meta charset="UTF-8">
@@ -7,17 +8,17 @@
 	<meta name="keywords" content="lab, onepage, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	<link href="img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/flaticon.css"/>
-	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/flaticon.css" />
+	<link rel="stylesheet" href="css/owl.carousel.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
 
 	<!--[if lt IE 9]>
@@ -26,6 +27,7 @@
 	<![endif]-->
 
 </head>
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -49,6 +51,34 @@
 				<li><a href="/services">Services</a></li>
 				<li class="active"><a href="/blog">Blog</a></li>
 				<li><a href="/contact">Contact</a></li>
+				<!-- Authentication Links -->
+				@guest
+				@if (Route::has('login'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+				</li>
+				@endif
+
+				@if (Route::has('register'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+				</li>
+				@endif
+				@else
+				<li class="nav-item dropdown">
+					@if (Auth::user()->role_id == 1)
+					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
+					@endif
+					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						{{ __('Logout') }}
+					</a>
+
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
+				</li>
+				@endguest
 			</ul>
 		</nav>
 	</header>
@@ -92,7 +122,10 @@
 								<a href="">Design, Inspiration</a>
 								<a href="">2 Comments</a>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis
+								ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat
+								augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
 							<a href="/blog-post" class="read-more">Read More</a>
 						</div>
 					</div>
@@ -112,7 +145,10 @@
 								<a href="">Design, Inspiration</a>
 								<a href="">2 Comments</a>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis
+								ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat
+								augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
 							<a href="/blog-post" class="read-more">Read More</a>
 						</div>
 					</div>
@@ -132,7 +168,10 @@
 								<a href="">Design, Inspiration</a>
 								<a href="">2 Comments</a>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis
+								ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat
+								augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
 							<a href="/blog-post" class="read-more">Read More</a>
 						</div>
 					</div>
@@ -194,7 +233,9 @@
 						<h2 class="widget-title">Quote</h2>
 						<div class="quote">
 							<span class="quotation">‘​‌‘​‌</span>
-							<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
+							<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut
+								hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.
+								Sed lacinia turpis at ultricies vestibulum.</p>
 						</div>
 					</div>
 					<!-- Single widget -->
@@ -248,4 +289,5 @@
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>

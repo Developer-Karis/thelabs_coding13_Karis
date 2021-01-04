@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Labs - Design Studio</title>
 	<meta charset="UTF-8">
@@ -7,17 +8,17 @@
 	<meta name="keywords" content="lab, onepage, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	<link href="img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/flaticon.css"/>
-	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/flaticon.css" />
+	<link rel="stylesheet" href="css/owl.carousel.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
 
 	<!--[if lt IE 9]>
@@ -26,6 +27,7 @@
 	<![endif]-->
 
 </head>
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -49,6 +51,34 @@
 				<li class="active"><a href="/services">Services</a></li>
 				<li><a href="/blog">Blog</a></li>
 				<li><a href="/contact">Contact</a></li>
+				<!-- Authentication Links -->
+				@guest
+				@if (Route::has('login'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+				</li>
+				@endif
+
+				@if (Route::has('register'))
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+				</li>
+				@endif
+				@else
+				<li class="nav-item dropdown">
+					@if (Auth::user()->role_id == 1)
+					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
+					@endif
+					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						{{ __('Logout') }}
+					</a>
+
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
+				</li>
+				@endguest
 			</ul>
 		</nav>
 	</header>
@@ -86,7 +116,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -98,7 +129,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -110,7 +142,8 @@
 						</div>
 						<div class="service-text">
 							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -122,7 +155,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Social Media</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -134,7 +168,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Brainstorming</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -146,7 +181,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Documented</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -158,7 +194,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Responsive</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -170,7 +207,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Retina ready</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -182,7 +220,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Ultra modern</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -200,7 +239,7 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="section-title">
-				<h2>Get in <span>the Lab</span> and  discover the world</h2>
+				<h2>Get in <span>the Lab</span> and discover the world</h2>
 			</div>
 			<div class="row">
 				<!-- feature item -->
@@ -208,7 +247,8 @@
 					<div class="icon-box light left">
 						<div class="service-text">
 							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec
+							</p>
 						</div>
 						<div class="icon">
 							<i class="flaticon-002-caliper"></i>
@@ -218,7 +258,8 @@
 					<div class="icon-box light left">
 						<div class="service-text">
 							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec
+							</p>
 						</div>
 						<div class="icon">
 							<i class="flaticon-019-coffee-cup"></i>
@@ -228,7 +269,8 @@
 					<div class="icon-box light left">
 						<div class="service-text">
 							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec
+							</p>
 						</div>
 						<div class="icon">
 							<i class="flaticon-020-creativity"></i>
@@ -249,7 +291,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec
+							</p>
 						</div>
 					</div>
 					<!-- feature item -->
@@ -259,7 +302,8 @@
 						</div>
 						<div class="service-text">
 							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec
+							</p>
 						</div>
 					</div>
 					<!-- feature item -->
@@ -269,7 +313,8 @@
 						</div>
 						<div class="service-text">
 							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec
+							</p>
 						</div>
 					</div>
 				</div>
@@ -294,7 +339,8 @@
 						</div>
 						<div class="card-text">
 							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -306,7 +352,8 @@
 						</div>
 						<div class="card-text">
 							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -318,7 +365,8 @@
 						</div>
 						<div class="card-text">
 							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+								elementum id, suscipit id nulla..</p>
 						</div>
 					</div>
 				</div>
@@ -357,7 +405,8 @@
 					<div class="section-title left">
 						<h2>Contact us</h2>
 					</div>
-					<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
+					<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel
+						suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
 					<h3 class="mt60">Main Office</h3>
 					<p class="con-item">C/ Libertad, 34 <br> 05200 Arévalo </p>
 					<p class="con-item">0034 37483 2445 322</p>
@@ -404,4 +453,5 @@
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>
