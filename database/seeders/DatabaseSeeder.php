@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 			BannerCarousSeeder::class,
 			ServicesRapidesSeeder::class,
 			HomePresentationSeeder::class,
+			HomeVideoSeeder::class,
 		]);
     }
 }

@@ -276,7 +276,7 @@ return [
                 ],
                 [
                     'text'    => 'Vidéo',
-                    'url'     => '#',
+                    'url'     => '/video',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [

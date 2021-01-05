@@ -58,5 +58,11 @@ Route::get('/services-rapides', [HomePageController::class, 'adminShowServicesRa
 
 // Home Presentation
 Route::get('/presentation', [HomePageController::class, 'adminShowPresentation']);
+Route::post('/update-presentation/{id}', [HomePageController::class, 'adminUpdatePresentation']);
+
+// Home Vidéo
+Route::get('/video', [HomePageController::class, 'adminShowVideo']);
+Route::post('/update-video/{id}', [HomePageController::class, 'adminUpdateVideo']);
+
 
 

@@ -15,7 +15,7 @@ class HomePresentationSeeder extends Seeder
     public function run()
     {
         DB::table('home_presentations')->insert([
-            'title' => 'GET IN THE LAB AND DISCOVER THE WORLD',
+            'title' => 'GET IN THE (LAB) AND DISCOVER THE WORLD',
             'para1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
             elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequat ante
             ac congue. Quisque porttitor porttitor tempus. Donec maximus ipsum non ornare vporttitor

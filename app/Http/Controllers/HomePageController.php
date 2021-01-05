@@ -8,6 +8,9 @@ use App\Models\Banner;
 use App\Models\BannerCarous;
 use App\Models\ServiceRapide;
 use App\Models\HomePresentation;
+use App\Models\HomeVideo;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -23,10 +26,29 @@ class HomePageController extends Controller
         $banners = Banner::all();
         $bannerCarous = BannerCarous::all();
         $servicesRapides = ServiceRapide::all();
+        $presentations = HomePresentation::all();
+        $videos = HomeVideo::all();
 
         $numbers = range(1, 9);
         shuffle($numbers);
-        return view('labs.home', compact('navbars', 'banners', 'bannerCarous', 'servicesRapides', 'numbers'));
+
+        $select = $presentations[0]->title;
+        $start = Str::before($select, '(');
+        $end = Str::after($select, ')');
+        $slice = Str::between($select, '(', ')');
+        return view('labs.home', 
+        compact(
+        'navbars', 
+        'banners', 
+        'bannerCarous', 
+        'servicesRapides', 
+        'numbers', 
+        'presentations', 
+        'start', 
+        'end', 
+        'slice',
+        'videos')
+        );
     }
 
     /**
@@ -141,5 +163,31 @@ class HomePageController extends Controller
     {
         $presentations = HomePresentation::all();
         return view('admin.home.presentation.presentation', compact('presentations'));
+    }
+
+    public function adminUpdatePresentation(HomePage $homePage, Request $request, $id) 
+    {
+        $updatePresentation = HomePresentation::find($id);
+        $updatePresentation->title = $request->title;        
+        $updatePresentation->para1 = $request->para1;
+        $updatePresentation->para2 = $request->para2;
+        $updatePresentation->button = $request->buttonPresentation;
+        $updatePresentation->save();
+        Session::flash('success');
+        return redirect()->back();
+    }
+
+    public function adminShowVideo(HomePage $homePage) 
+    {
+        $videos = HomeVideo::all();
+        return view('admin.home.video.video', compact('videos'));
+    }
+
+    public function adminUpdateVideo(HomePage $homePage, Request $request, $id) 
+    {
+        $updateVideo = HomeVideo::find($id);
+        $updateVideo->video = $request->linkVideo;
+        $updateVideo->save();
+        return redirect()->back();
     }
 }
