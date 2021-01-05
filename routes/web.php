@@ -43,7 +43,20 @@ Route::get('/blog-post', [BlogPostController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 
 // AdminLte
+// Home Menu
 Route::get('/menu', [NavbarController::class, 'index']);
 Route::post('/update-links/{id}', [NavbarController::class, 'updateLinks']);
+
+// Home Banniere
 Route::get('/banniere', [HomePageController::class, 'adminShowBanniere']);
+Route::post('/create-image-carous', [HomePageController::class, 'adminAddImageCarous']);
+Route::get('/edit-logo-slogan/{id}', [HomePageController::class, 'adminEditLogoSlogan']);
+Route::post('/update-logo-slogan/{id}', [HomePageController::class, 'adminUpdateLogoSlogan']);
+
+// Home Service Rapides
+Route::get('/services-rapides', [HomePageController::class, 'adminShowServicesRapides']);
+
+// Home Presentation
+Route::get('/presentation', [HomePageController::class, 'adminShowPresentation']);
+
 

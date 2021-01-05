@@ -21,7 +21,6 @@
 	<link rel="stylesheet" href="css/owl.carousel.css" />
 	<link rel="stylesheet" href="css/style.css" />
 
-
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,7 +36,6 @@
 			<h2>Loading.....</h2>
 		</div>
 	</div>
-
 
 	<!-- Header section -->
 	<header class="header-section">
@@ -92,14 +90,25 @@
 	<div class="hero-section">
 		<div class="hero-content">
 			<div class="hero-center">
+				@foreach ($banners as $item)
+				@if ($item->logo == 'img/logo.png')
 				<img src="img/big-logo.png" alt="">
-				<p>Get your freebie template now!</p>
+				@else
+				<img src="{{asset('images/'.$item->logo)}}" alt="" height="200">
+				@endif
+				<p style="color: orange !important; font-weight: bold !important;">{{$item->slogan}}</p>
+				@endforeach
 			</div>
 		</div>
 		<!-- slider -->
 		<div id="hero-slider" class="owl-carousel">
-			<div class="item  hero-item" data-bg="img/01.jpg"></div>
-			<div class="item  hero-item" data-bg="img/02.jpg"></div>
+			@foreach ($bannerCarous as $item)
+			@if ($item->imageCarous == 'img/01.jpg' || $item->imageCarous == 'img/02.jpg')
+			<div class="item  hero-item" data-bg="{{asset($item->imageCarous)}}"></div>
+			@else
+			<div class="item  hero-item" data-bg="{{asset('images/'.$item->imageCarous)}}"></div>
+			@endif
+			@endforeach
 		</div>
 	</div>
 	<!-- Intro Section -->
@@ -113,80 +122,61 @@
 			<div class="container">
 				<div class="row">
 					<!-- single card -->
-					<div class="col-md-4 col-sm-6">
+					@foreach ($numbers as $item)
+					@if ($loop->iteration <= 3) <div class="col-md-4 col-sm-6">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-023-flask"></i>
+								<i class="{{ $servicesRapides->find($item)->icon }}"></i>
 							</div>
-							<h2>Get in the lab</h2>
+							<h2>{{ $servicesRapides->find($item)->title }}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
 								elementum id, suscipit id nulla..</p>
 						</div>
-					</div>
-					<!-- single card -->
-					<div class="col-md-4 col-sm-6">
-						<div class="lab-card">
-							<div class="icon">
-								<i class="flaticon-011-compass"></i>
-							</div>
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-					<!-- single card -->
-					<div class="col-md-4 col-sm-12">
-						<div class="lab-card">
-							<div class="icon">
-								<i class="flaticon-037-idea"></i>
-							</div>
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
 				</div>
+				@endif
+				@endforeach
 			</div>
 		</div>
-		<!-- card section end-->
+	</div>
+	<!-- card section end-->
 
 
-		<!-- About contant -->
-		<div class="about-contant">
-			<div class="container">
-				<div class="section-title">
-					<h2>Get in <span>the Lab</span> and discover the world</h2>
+	<!-- About contant -->
+	<div class="about-contant">
+		<div class="container">
+			<div class="section-title">
+				<h2>Get in <span>the Lab</span> and discover the world</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+						elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequat ante
+						ac congue. Quisque porttitor porttitor tempus. Donec maximus ipsum non ornare vporttitor
+						porttitorestibulum. Sed libero nibh, feugiat at enim id, bibendum sollicitudin arcu.</p>
 				</div>
+				<div class="col-md-6">
+					<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel
+						suscipit dolor. Donec elementum velit a orci facilisis rutrum. Nam convallis vel erat id
+						dictum. Sed ut risus in orci convallis viverra a eget nisi. Aenean pellentesque elit vitae
+						eros dignissim ultrices. Quisque porttitor porttitorlaoreet vel risus et luctus.</p>
+				</div>
+			</div>
+			<div class="text-center mt60">
+				<a href="" class="site-btn">Browse</a>
+			</div>
+			<!-- popup video -->
+			<div class="intro-video">
 				<div class="row">
-					<div class="col-md-6">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-							elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequat ante
-							ac congue. Quisque porttitor porttitor tempus. Donec maximus ipsum non ornare vporttitor
-							porttitorestibulum. Sed libero nibh, feugiat at enim id, bibendum sollicitudin arcu.</p>
-					</div>
-					<div class="col-md-6">
-						<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel
-							suscipit dolor. Donec elementum velit a orci facilisis rutrum. Nam convallis vel erat id
-							dictum. Sed ut risus in orci convallis viverra a eget nisi. Aenean pellentesque elit vitae
-							eros dignissim ultrices. Quisque porttitor porttitorlaoreet vel risus et luctus.</p>
-					</div>
-				</div>
-				<div class="text-center mt60">
-					<a href="" class="site-btn">Browse</a>
-				</div>
-				<!-- popup video -->
-				<div class="intro-video">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<img src="img/video.jpg" alt="">
-							<a href="https://www.youtube.com/watch?v=JgHfx2v9zOU" class="video-popup">
-								<i class="fa fa-play"></i>
-							</a>
-						</div>
+					<div class="col-md-8 col-md-offset-2">
+						<img src="img/video.jpg" alt="">
+						<a href="https://www.youtube.com/watch?v=JgHfx2v9zOU" class="video-popup">
+							<i class="fa fa-play"></i>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- About section end -->
 

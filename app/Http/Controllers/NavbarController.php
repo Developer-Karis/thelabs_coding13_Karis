@@ -16,7 +16,7 @@ class NavbarController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('admin.home.menu', compact('navbars'));
+        return view('admin.home.menu.menu', compact('navbars'));
     }
 
     /**

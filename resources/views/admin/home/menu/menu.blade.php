@@ -2,12 +2,6 @@
 
 @section('title', 'AdminLTE')
 
-@section('content_header')
-<div class="mt-5 mb-5">
-    <h1 class="py-3 bg-dark w-25 m-auto text-center shadow mb-5 rounded">Links</h1>
-</div>
-@stop
-
 @section('content')
 <div class="container">
     @if(Session::has('success'))
@@ -21,7 +15,7 @@
             <h3 class="card-title font-weight-bold">Change name Links</h3>
         </div>
 
-        <form action="/update-links/{{$navbars[0]->id}}" method="post" enctype="multipart/form-data">
+        <form action="/update-links/{{$navbars[0]->id}}" method="post">
             @csrf
             <div class="card-body text-center">
                 <div class="form-group">

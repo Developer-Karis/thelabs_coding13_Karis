@@ -6,6 +6,8 @@ use App\Models\HomePage;
 use App\Models\Navbar;
 use App\Models\Banner;
 use App\Models\BannerCarous;
+use App\Models\ServiceRapide;
+use App\Models\HomePresentation;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -18,7 +20,13 @@ class HomePageController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('labs.home', compact('navbars'));
+        $banners = Banner::all();
+        $bannerCarous = BannerCarous::all();
+        $servicesRapides = ServiceRapide::all();
+
+        $numbers = range(1, 9);
+        shuffle($numbers);
+        return view('labs.home', compact('navbars', 'banners', 'bannerCarous', 'servicesRapides', 'numbers'));
     }
 
     /**
@@ -91,6 +99,47 @@ class HomePageController extends Controller
     {
         $banners = Banner::all();
         $bannersCarous = BannerCarous::all();
-        return view('admin.home.banniere', compact('banners', 'bannersCarous'));
+        return view('admin.home.banniere.banniere', compact('banners', 'bannersCarous'));
+    }
+
+    public function adminAddImageCarous(HomePage $homePage, Request $request) 
+    {
+        $createImageCarous = new BannerCarous();
+        $createImageCarous->imageCarous = $request->file('newImageCarous')->hashName();
+        $createImageCarous->save();
+        $request->file('newImageCarous')->storePublicly('images', 'public');
+        return redirect()->back();
+    }
+
+    public function adminEditLogoSlogan(HomePage $homePage, $id) 
+    {
+        $edit = Banner::find($id);
+        $editCarous = BannerCarous::find($id);
+        return view('admin.home.banniere.banniereEdit', compact('edit', 'editCarous'));
+    }
+
+    public function adminUpdateLogoSlogan(HomePage $homePage, Request $request, $id) 
+    {
+        $updateLogoSlogan = Banner::find($id);
+        $updateLogoSlogan->logo = $request->file('updateImageLogo')->hashName();
+        $updateLogoSlogan->slogan = $request->updateSlogan;
+        $updateLogoSlogan->save();
+        $request->file('updateImageLogo')->storePublicly('images', 'public');
+        return redirect()->back();
+    }
+
+    public function adminShowServicesRapides(HomePage $homePage) 
+    {
+        $servicesRapides = ServiceRapide::all();
+
+        $numbers = range(1, 9);
+        shuffle($numbers);
+        return view('admin.home.servicesRapides.servicesRapides', compact('servicesRapides', 'numbers'));
+    }
+
+    public function adminShowPresentation(HomePage $homePage) 
+    {
+        $presentations = HomePresentation::all();
+        return view('admin.home.presentation.presentation', compact('presentations'));
     }
 }

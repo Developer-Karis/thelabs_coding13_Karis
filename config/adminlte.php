@@ -266,12 +266,12 @@ return [
                 ],
                 [
                     'text'    => 'Services Rapides',
-                    'url'     => '#',
+                    'url'     => '/services-rapides',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
                     'text'    => 'Présentation',
-                    'url'     => '#',
+                    'url'     => '/presentation',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
