@@ -9,7 +9,6 @@ use App\Models\BannerCarous;
 use App\Models\ServiceRapide;
 use App\Models\HomePresentation;
 use App\Models\HomeVideo;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Image;
 use Illuminate\Support\Facades\Storage;
@@ -207,14 +206,12 @@ class HomePageController extends Controller
         $updatePresentation->para2 = $request->para2;
         $updatePresentation->button = $request->buttonPresentation;
         $updatePresentation->save();
-        Session::flash('success');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Mise à jour effectué avec succès !');
     }
 
     public function adminShowVideo(HomePage $homePage) 
     {
         $videos = HomeVideo::all();
-        Session::flash('success');
         return view('admin.home.video.video', compact('videos'));
     }
 

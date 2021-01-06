@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="container">
-    @if(Session::has('success'))
+
+    @if (session('success'))
     <div class="alert alert-success w-50 m-auto">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Modification effectuée avec Succès !</strong> {{ Session::get('message', '') }}
+        {{ session('success') }}
     </div>
     <script>
         window.setTimeout(function() {
