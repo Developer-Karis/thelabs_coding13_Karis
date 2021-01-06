@@ -23,6 +23,46 @@ class HomeTestimonialSeeder extends Seeder
                 'para' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
                 elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.',
             ],
+            [
+                'title' => null,
+                'avatar' => 'avatar/02.jpg',
+                'fullName' => 'Michael Smith',
+                'function' => 'CEO Company',
+                'para' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+                elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.',
+            ],
+            [
+                'title' => null,
+                'avatar' => 'avatar/01.jpg',
+                'fullName' => 'Michael Smith',
+                'function' => 'CEO Company',
+                'para' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+                elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.',
+            ],
+            [
+                'title' => null,
+                'avatar' => 'avatar/02.jpg',
+                'fullName' => 'Michael Smith',
+                'function' => 'CEO Company',
+                'para' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+                elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.',
+            ],
+            [
+                'title' => null,
+                'avatar' => 'avatar/01.jpg',
+                'fullName' => 'Michael Smith',
+                'function' => 'CEO Company',
+                'para' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+                elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.',
+            ],
+            [
+                'title' => null,
+                'avatar' => 'avatar/02.jpg',
+                'fullName' => 'Michael Smith',
+                'function' => 'CEO Company',
+                'para' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
+                elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.',
+            ],
         ]);
     }
 }

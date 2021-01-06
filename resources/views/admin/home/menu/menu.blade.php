@@ -4,17 +4,16 @@
 
 @section('content')
 <div class="container">
-    @if(Session::has('success'))
+    @if (session('success'))
     <div class="alert alert-success w-50 m-auto">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Modification effectuée avec Succès !</strong> {{ Session::get('message', '') }}
+        {{ session('success') }}
     </div>
     <script>
         window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove(); 
             });
-        }, 2000);
+        }, 1000);
     </script>
     @endif
     <div class="card shadow mb-5 mt-3 bg-white rounded card-warning" style="width: 50%; margin: auto;">

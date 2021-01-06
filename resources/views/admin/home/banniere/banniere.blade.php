@@ -9,7 +9,6 @@
             <div class="card-header">
                 <h3 class="card-title font-weight-bold">Changer le Logo et le Slogan</h3>
             </div>
-
             @foreach ($banners as $item)
             <form action="/update-logo-slogan/{{$item->id}}" method="post" enctype="multipart/form-data">
                 @csrf

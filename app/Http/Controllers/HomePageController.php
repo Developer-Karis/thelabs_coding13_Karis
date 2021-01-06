@@ -9,6 +9,7 @@ use App\Models\BannerCarous;
 use App\Models\ServiceRapide;
 use App\Models\HomePresentation;
 use App\Models\HomeVideo;
+use App\Models\HomeTestimonial;
 use Illuminate\Support\Str;
 use Image;
 use Illuminate\Support\Facades\Storage;
@@ -29,6 +30,7 @@ class HomePageController extends Controller
         $servicesRapides = ServiceRapide::all();
         $presentations = HomePresentation::all();
         $videos = HomeVideo::all();
+        $testimonials = HomeTestimonial::all();
 
         $numbers = range(1, 9);
         shuffle($numbers);
@@ -39,6 +41,8 @@ class HomePageController extends Controller
         $slice = Str::between($select, '(', ')');
 
         $linkVideo = substr($videos[0]->video, 0, strpos($videos[0]->video, "&"));
+
+        $order = HomeTestimonial::orderBy('created_at', 'DESC')->get();
 
         return view('labs.home', 
         compact(
@@ -52,7 +56,9 @@ class HomePageController extends Controller
         'end', 
         'slice',
         'videos',
-        'linkVideo')
+        'linkVideo',
+        'testimonials', 
+        'order')
         );
     }
 
@@ -220,11 +226,68 @@ class HomePageController extends Controller
         $updateVideo = HomeVideo::find($id);
         $updateVideo->video = $request->linkVideo;
         $updateVideo->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Mise à jour effectué avec succès !');
     }
 
     public function adminShowTestimonials(HomePage $homePage) 
     {
-        return view('admin.home.testimonials.testimonials');
+        $testimonials = HomeTestimonial::all();
+        $order = HomeTestimonial::orderBy('created_at', 'DESC')->get();
+        return view('admin.home.testimonials.testimonials', compact('testimonials', 'order'));
+    }
+
+    public function adminEditTestimonial(HomePage $homePage, $id) 
+    {
+        $editTestimonial = HomeTestimonial::find($id);
+        $testimonials = HomeTestimonial::all();
+        return view('admin.home.testimonials.testimonialsEdit', compact('editTestimonial', 'testimonials'));
+    }
+
+    public function adminStoreTestimonial(HomePage $homePage, Request $request) 
+    {
+        $storeTestimonial = new HomeTestimonial();
+
+        if ($request->radAnswer == 'avatar/01.jpg') {
+            $storeTestimonial->avatar = 'avatar/01.jpg';        
+        } else if ($request->radAnswer == 'avatar/02.jpg') {
+            $storeTestimonial->avatar = 'avatar/02.jpg';        
+        }
+        $storeTestimonial->para = $request->newPara;
+        $storeTestimonial->fullName = $request->newFullName;
+        $storeTestimonial->function = $request->newFunction;
+        $storeTestimonial->save();
+        return redirect()->back();
+    }
+
+    public function adminUpdateTitleTestimonial(HomePage $homePage, Request $request, $id) 
+    {
+        $updateTitleTestimonial = HomeTestimonial::find($id);
+        $updateTitleTestimonial->title = $request->title;
+        $updateTitleTestimonial->save();
+        return redirect()->back();
+    }
+
+    public function adminUpdateTestimonial(HomePage $homePage, Request $request, $id) 
+    {
+        $updateTestimonial = HomeTestimonial::find($id);
+        
+        if ($request->radAnswer == 'avatar/01.jpg') {
+            $updateTestimonial->avatar = 'avatar/01.jpg';        
+        } else if ($request->radAnswer == 'avatar/02.jpg') {
+            $updateTestimonial->avatar = 'avatar/02.jpg';        
+        }
+        
+        $updateTestimonial->para = $request->para;
+        $updateTestimonial->fullName = $request->fullName;
+        $updateTestimonial->function = $request->function;
+        $updateTestimonial->save();
+        return redirect('/testimonials');
+    }
+
+    public function adminDeleteTestimonial(HomePage $homePage, Request $request, $id) 
+    {
+        $deleteTestimonial = HomeTestimonial::find($id);
+        $deleteTestimonial->delete();
+        return redirect()->back();
     }
 }

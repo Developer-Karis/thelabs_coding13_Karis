@@ -69,6 +69,11 @@ Route::post('/update-video/{id}', [HomePageController::class, 'adminUpdateVideo'
 
 // Home Testimonials
 Route::get('/testimonials', [HomePageController::class, 'adminShowTestimonials']);
+Route::get('/edit-testimonial/{id}', [HomePageController::class, 'adminEditTestimonial']);
+Route::post('/store-testimonial', [HomePageController::class, 'adminStoreTestimonial']);
+Route::post('/update-title-testimonial/{id}', [HomePageController::class, 'adminUpdateTitleTestimonial']);
+Route::post('/update-testimonial/{id}', [HomePageController::class, 'adminUpdateTestimonial']);
+Route::get('/delete-testimonial/{id}', [HomePageController::class, 'adminDeleteTestimonial']);
 
 
 

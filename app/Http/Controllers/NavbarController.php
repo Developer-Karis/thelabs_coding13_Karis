@@ -99,7 +99,6 @@ class NavbarController extends Controller
         $updateLinks->link3 = $request->link3;
         $updateLinks->link4 = $request->link4;
         $updateLinks->save();
-        Session::flash('success');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Mise à jour effectué avec succès !');
     }
 }

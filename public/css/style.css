@@ -5,7 +5,6 @@
  ------------------------------------ 
  ====================================*/
 
-
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
@@ -243,7 +242,6 @@ ul {
 	}
 }
 
-
 /*------------------------
 	Header css
 --------------------------*/
@@ -391,7 +389,6 @@ ul {
 	z-index: 1;
 }
 
-
 /*------------------------
 	About section
 --------------------------*/
@@ -428,7 +425,7 @@ ul {
 	text-align: center;
 	background: #f5faf8;
 	-webkit-box-shadow: 0 0 8px rgba(74, 74, 74, 0.1);
-	        box-shadow: 0 0 8px rgba(74, 74, 74, 0.1);
+	box-shadow: 0 0 8px rgba(74, 74, 74, 0.1);
 	-webkit-transition: all 0.4s ease 0s;
 	-o-transition: all 0.4s ease 0s;
 	transition: all 0.4s ease 0s;
@@ -482,14 +479,14 @@ ul {
 
 .intro-video {
 	-webkit-transform: translateY(50%);
-	    -ms-transform: translateY(50%);
-	        transform: translateY(50%);
+	-ms-transform: translateY(50%);
+	transform: translateY(50%);
 	margin-top: -90px;
 }
 
 .intro-video img {
 	-webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);
-	        box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);
 }
 
 .intro-video a {
@@ -507,7 +504,6 @@ ul {
 	padding-top: 20px;
 	padding-left: 5px;
 }
-
 
 /*------------------------
   Testimonial section
@@ -610,8 +606,8 @@ ul {
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
 	-webkit-transform: scale(0);
-	    -ms-transform: scale(0);
-	        transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
 }
 
 #testimonial-slide .owl-dots .owl-dot.active {
@@ -622,14 +618,13 @@ ul {
 
 #testimonial-slide .owl-dots .owl-dot.active:after {
 	-webkit-transform: scale(1);
-	    -ms-transform: scale(1);
-	        transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
 }
 
 #testimonial-slide .owl-dots .owl-dot:first-child.active {
 	margin-top: 15px;
 }
-
 
 /*----------------------------------
 	header and icon box element
@@ -688,7 +683,6 @@ ul {
 	margin-right: 0;
 }
 
-
 /*------------------------
 	Team section
 --------------------------*/
@@ -719,7 +713,6 @@ ul {
 	text-transform: uppercase;
 }
 
-
 /*------------------------
 	Promotion section
 --------------------------*/
@@ -746,7 +739,6 @@ ul {
 	text-align: right;
 	padding-top: 15px;
 }
-
 
 /*------------------------
 	Contact section
@@ -836,7 +828,6 @@ ul {
 	font-size: 14px;
 }
 
-
 /*------------------------
 	Footer section
 --------------------------*/
@@ -909,7 +900,6 @@ ul {
 	display: none;
 }
 
-
 /*------------------------
 	Features Section
 --------------------------*/
@@ -925,7 +915,6 @@ ul {
 .features .icon-box {
 	margin-bottom: 90px;
 }
-
 
 /*------------------------
 	Services Card Section
@@ -975,7 +964,6 @@ ul {
 .sv-card .card-text p {
 	font-size: 15px;
 }
-
 
 /*------------------------
 	Newsletter Section
@@ -1035,7 +1023,6 @@ ul {
 .nl-form ::-ms-input-placeholder {
 	color: #fff;
 }
-
 
 /*------------------------
 	Blog Page
@@ -1244,7 +1231,6 @@ ul {
 	outline: none;
 }
 
-
 /*------------------------
 	Single Post
 --------------------------*/
@@ -1313,7 +1299,6 @@ ul {
 .map {
 	height: 750px;
 }
-
 
 /*------------------------
 	Elements
@@ -1441,8 +1426,8 @@ ul {
 
 .circle-progress canvas {
 	-webkit-transform: rotate(90deg);
-	    -ms-transform: rotate(90deg);
-	        transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
 }
 
 .circle-progress .progress-info {
@@ -1485,8 +1470,6 @@ ul {
 	font-weight: 500;
 }
 
-
-
 /* ===========================
 	Responsive
 ==============================*/
@@ -1520,16 +1503,15 @@ ul {
 	#testimonial-slide .owl-dots {
 		top: 95%;
 		-webkit-transform: rotate(-90deg);
-		    -ms-transform: rotate(-90deg);
-		        transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
 		-webkit-transform-origin: left center;
-		    -ms-transform-origin: left center;
-		        transform-origin: left center;
+		-ms-transform-origin: left center;
+		transform-origin: left center;
 		left: 50%;
 		margin-left: -4px;
 	}
 }
-
 
 /* Tablet :768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1539,11 +1521,11 @@ ul {
 	#testimonial-slide .owl-dots {
 		top: 95%;
 		-webkit-transform: rotate(-90deg);
-		    -ms-transform: rotate(-90deg);
-		        transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
 		-webkit-transform-origin: left center;
-		    -ms-transform-origin: left center;
-		        transform-origin: left center;
+		-ms-transform-origin: left center;
+		transform-origin: left center;
 		left: 50%;
 		margin-left: -4px;
 	}
@@ -1637,11 +1619,11 @@ ul {
 	#testimonial-slide .owl-dots {
 		top: 86%;
 		-webkit-transform: rotate(-90deg);
-		    -ms-transform: rotate(-90deg);
-		        transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
 		-webkit-transform-origin: left center;
-		    -ms-transform-origin: left center;
-		        transform-origin: left center;
+		-ms-transform-origin: left center;
+		transform-origin: left center;
 		left: 50%;
 		margin-left: -4px;
 	}
@@ -1721,11 +1703,11 @@ ul {
 	}
 	.post-thumbnail .post-date {
 		-webkit-transform: scale(0.7);
-		    -ms-transform: scale(0.7);
-		        transform: scale(0.7);
+		-ms-transform: scale(0.7);
+		transform: scale(0.7);
 		-webkit-transform-origin: left top;
-		    -ms-transform-origin: left top;
-		        transform-origin: left top;
+		-ms-transform-origin: left top;
+		transform-origin: left top;
 	}
 	.single-post .author .avatar {
 		margin-right: 20px;

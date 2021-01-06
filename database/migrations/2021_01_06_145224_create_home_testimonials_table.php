@@ -15,7 +15,7 @@ class CreateHomeTestimonialsTable extends Migration
     {
         Schema::create('home_testimonials', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('avatar');
             $table->string('fullName');
             $table->string('function');
