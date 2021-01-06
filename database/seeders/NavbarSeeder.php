@@ -15,6 +15,7 @@ class NavbarSeeder extends Seeder
     public function run()
     {
         DB::table('navbars')->insert([
+            'navLogo' => 'logo.png',
             'link1' => 'Home',
             'link2' => 'Services',
             'link3' => 'Blog',

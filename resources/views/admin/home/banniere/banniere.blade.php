@@ -16,11 +16,7 @@
                 <div class="card-body text-center">
                     <div class="form-group"><br>
                         <label for="">Logo Actuel</label><br>
-                        @if ($item->logo == 'img/logo.png')
-                        <img src="{{asset($item->logo)}}" alt=""><br><br>
-                        @else
-                        <img src="{{asset('images/'.$item->logo)}}" alt="" height="200"><br><br>
-                        @endif
+                        <img src="{{asset('img/'.$item->logo)}}" alt="" height="200"><br><br>
                         <input type="file" name="updateImageLogo" id="">
                     </div>
                     <div class="form-group"><br>
@@ -76,11 +72,7 @@
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>
-                                @if ($item->imageCarous == 'img/01.jpg' || $item->imageCarous == 'img/02.jpg')
                                 <img src="{{asset($item->imageCarous)}}" height="120" width="200" alt="">
-                                @else
-                                <img src="{{asset('images/'.$item->imageCarous)}}" height="120" width="200" alt="">
-                                @endif
                             </td>
                             <td>
                                 <a href="/edit-carous/{{$item->id}}" class="btn btn-primary mr-2">Edit</a>

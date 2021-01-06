@@ -15,6 +15,7 @@ class CreateNavbarsTable extends Migration
     {
         Schema::create('navbars', function (Blueprint $table) {
             $table->id();
+            $table->string('navLogo');
             $table->string('link1');
             $table->string('link2');
             $table->string('link3');

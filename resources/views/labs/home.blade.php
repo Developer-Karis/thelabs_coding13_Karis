@@ -40,7 +40,11 @@
 	<!-- Header section -->
 	<header class="header-section">
 		<div class="logo">
-			<img src="img/logo.png" alt=""><!-- Logo -->
+			@if ($navbars[0]->navLogo == 'logo.png')
+			<img src="{{asset('img/'.$navbars[0]->navLogo)}}" alt=""><!-- Logo -->
+			@else
+			<img src="{{asset('img/small-'.$banners[0]->logo)}}" alt=""><!-- Logo -->
+			@endif
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
@@ -91,11 +95,7 @@
 		<div class="hero-content">
 			<div class="hero-center">
 				@foreach ($banners as $item)
-				@if ($item->logo == 'img/logo.png')
-				<img src="img/big-logo.png" alt="">
-				@else
-				<img src="{{asset('images/'.$item->logo)}}" alt="" height="200">
-				@endif
+				<img src="{{asset('img/'.$item->logo)}}" alt="">
 				<p style="color: orange !important; font-weight: bold !important;">{{$item->slogan}}</p>
 				@endforeach
 			</div>
@@ -103,11 +103,7 @@
 		<!-- slider -->
 		<div id="hero-slider" class="owl-carousel">
 			@foreach ($bannerCarous as $item)
-			@if ($item->imageCarous == 'img/01.jpg' || $item->imageCarous == 'img/02.jpg')
-			<div class="item  hero-item" data-bg="{{asset($item->imageCarous)}}"></div>
-			@else
-			<div class="item  hero-item" data-bg="{{asset('images/'.$item->imageCarous)}}"></div>
-			@endif
+			<div class="item  hero-item" data-bg="{{asset('img/'.$item->imageCarous)}}"></div>
 			@endforeach
 		</div>
 	</div>
@@ -165,7 +161,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<img src="img/video.jpg" alt="">
-						<a href="https://youtu.be/JgHfx2v9zOU" class="video-popup">
+						<a href="{{$videos[0]->video}}" class="video-popup">
 							<i class="fa fa-play"></i>
 						</a>
 					</div>

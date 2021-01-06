@@ -16,10 +16,10 @@ class BannerCarousSeeder extends Seeder
     {
         DB::table('banner_carouses')->insert([
             [
-                'imageCarous' => 'img/01.jpg',
+                'imageCarous' => '01.jpg',
             ],
             [
-                'imageCarous' => 'img/02.jpg',
+                'imageCarous' => '02.jpg',
             ],
         ]);
     }

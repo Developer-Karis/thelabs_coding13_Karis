@@ -11,6 +11,8 @@ use App\Models\HomePresentation;
 use App\Models\HomeVideo;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Image;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -129,27 +131,37 @@ class HomePageController extends Controller
         $createImageCarous = new BannerCarous();
         $createImageCarous->imageCarous = $request->file('newImageCarous')->hashName();
         $createImageCarous->save();
-        $request->file('newImageCarous')->storePublicly('images', 'public');
+        $request->file('newImageCarous')->storePublicly('img', 'public');
         return redirect()->back();
     }
-
-    public function adminEditLogoSlogan(HomePage $homePage, $id) 
-    {
-        $edit = Banner::find($id);
-        $editCarous = BannerCarous::find($id);
-        return view('admin.home.banniere.banniereEdit', compact('edit', 'editCarous'));
-    }
-
+    
     public function adminUpdateLogoSlogan(HomePage $homePage, Request $request, $id) 
     {
         $updateLogoSlogan = Banner::find($id);
         $updateLogoSlogan->logo = $request->file('updateImageLogo')->hashName();
         $updateLogoSlogan->slogan = $request->updateSlogan;
         $updateLogoSlogan->save();
-        $request->file('updateImageLogo')->storePublicly('images', 'public');
+        $request->file('updateImageLogo')->storePublicly('img', 'public');
+        $img = Image::make('img/'.$updateLogoSlogan->logo)->resize(100,80);
+        $img->save('img/small-'.$updateLogoSlogan->logo);
         return redirect()->back();
     }
 
+    public function adminEditCarous(HomePage $homePage, $id) 
+    {
+        $editCarous = BannerCarous::find($id);
+        return view('admin.home.banniere.banniereEdit', compact('editCarous'));
+    }
+
+    public function adminUpdateImageCarous(HomePage $homePage, Request $request, $id) 
+    {
+        $updateImageCarous = BannerCarous::find($id);
+        $updateImageCarous->imageCarous = $request->file('newImageCarous')->hashName();
+        $updateImageCarous->save();
+        $request->file('newImageCarous')->storePublicly('img', 'public');
+        return redirect('/banniere');
+    }
+    
     public function adminShowServicesRapides(HomePage $homePage) 
     {
         $servicesRapides = ServiceRapide::all();

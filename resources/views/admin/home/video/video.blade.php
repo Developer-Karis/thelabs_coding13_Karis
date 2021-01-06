@@ -12,9 +12,6 @@
             @csrf
             <div class="card-body text-center">
                 <div class="form-group">
-                    <iframe width="520" height="315" src="{{$videos[0]->video}}" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe><br><br>
                     <label for="">Changer le lien</label><br>
                     <input type="text" name="linkVideo" value="{{$videos[0]->video}}" class="w-100">
                 </div>
