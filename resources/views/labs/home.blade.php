@@ -39,12 +39,8 @@
 
 	<!-- Header section -->
 	<header class="header-section">
-		<div class="logo">
-			@if ($navbars[0]->navLogo == 'logo.png')
-			<img src="{{asset('img/'.$navbars[0]->navLogo)}}" alt=""><!-- Logo -->
-			@else
+		<div class="logo" style="padding-top: 5px !important;">
 			<img src="{{asset('img/small-'.$banners[0]->logo)}}" alt=""><!-- Logo -->
-			@endif
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
@@ -153,7 +149,7 @@
 				</div>
 			</div>
 			<div class="text-center mt60">
-				<a href="" class="site-btn">{{$item->button}}</a>
+				<a href="/contact" class="site-btn">{{$item->button}}</a>
 			</div>
 			@endforeach
 			<!-- popup video -->
@@ -161,7 +157,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<img src="img/video.jpg" alt="">
-						<a href="{{$videos[0]->video}}" class="video-popup">
+						<a href="{{$linkVideo}}" class="video-popup">
 							<i class="fa fa-play"></i>
 						</a>
 					</div>

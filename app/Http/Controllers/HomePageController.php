@@ -38,6 +38,9 @@ class HomePageController extends Controller
         $start = Str::before($select, '(');
         $end = Str::after($select, ')');
         $slice = Str::between($select, '(', ')');
+
+        $linkVideo = substr($videos[0]->video, 0, strpos($videos[0]->video, "&"));
+
         return view('labs.home', 
         compact(
         'navbars', 
@@ -49,7 +52,8 @@ class HomePageController extends Controller
         'start', 
         'end', 
         'slice',
-        'videos')
+        'videos',
+        'linkVideo')
         );
     }
 
@@ -138,6 +142,12 @@ class HomePageController extends Controller
     public function adminUpdateLogoSlogan(HomePage $homePage, Request $request, $id) 
     {
         $updateLogoSlogan = Banner::find($id);
+
+        if ($updateLogoSlogan->logo != 'logo.png') {
+            Storage::disk('public')->delete('img/' . $updateLogoSlogan->logo);
+            Storage::disk('public')->delete('img/small-' . $updateLogoSlogan->logo);
+        }
+
         $updateLogoSlogan->logo = $request->file('updateImageLogo')->hashName();
         $updateLogoSlogan->slogan = $request->updateSlogan;
         $updateLogoSlogan->save();
@@ -156,9 +166,21 @@ class HomePageController extends Controller
     public function adminUpdateImageCarous(HomePage $homePage, Request $request, $id) 
     {
         $updateImageCarous = BannerCarous::find($id);
+
+        if ($updateImageCarous->imageCarous != '01.jpg' || $updateImageCarous->imageCarous != '02.jpg') {
+            Storage::disk('public')->delete('img/' . $updateImageCarous->imageCarous);
+        }
+
         $updateImageCarous->imageCarous = $request->file('newImageCarous')->hashName();
         $updateImageCarous->save();
         $request->file('newImageCarous')->storePublicly('img', 'public');
+        return redirect('/banniere');
+    }
+    
+    public function adminDeleteImageCarous(HomePage $homePage, $id) 
+    {
+        $updateImageCarous = BannerCarous::find($id);
+        $updateImageCarous->delete(); 
         return redirect('/banniere');
     }
     
@@ -192,6 +214,7 @@ class HomePageController extends Controller
     public function adminShowVideo(HomePage $homePage) 
     {
         $videos = HomeVideo::all();
+        Session::flash('success');
         return view('admin.home.video.video', compact('videos'));
     }
 
@@ -201,5 +224,10 @@ class HomePageController extends Controller
         $updateVideo->video = $request->linkVideo;
         $updateVideo->save();
         return redirect()->back();
+    }
+
+    public function adminShowTestimonials(HomePage $homePage) 
+    {
+        return view('admin.home.testimonials.testimonials');
     }
 }

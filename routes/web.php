@@ -54,6 +54,7 @@ Route::get('/edit-logo-slogan/{id}', [HomePageController::class, 'adminEditLogoS
 Route::post('/update-logo-slogan/{id}', [HomePageController::class, 'adminUpdateLogoSlogan']);
 Route::get('/edit-carous/{id}', [HomePageController::class, 'adminEditCarous']);
 Route::post('/update-image-carous/{id}', [HomePageController::class, 'adminUpdateImageCarous']);
+Route::get('/delete-carous/{id}', [HomePageController::class, 'adminDeleteImageCarous']);
 
 // Home Service Rapides
 Route::get('/services-rapides', [HomePageController::class, 'adminShowServicesRapides']);
@@ -65,6 +66,9 @@ Route::post('/update-presentation/{id}', [HomePageController::class, 'adminUpdat
 // Home Vidéo
 Route::get('/video', [HomePageController::class, 'adminShowVideo']);
 Route::post('/update-video/{id}', [HomePageController::class, 'adminUpdateVideo']);
+
+// Home Testimonials
+Route::get('/testimonials', [HomePageController::class, 'adminShowTestimonials']);
 
 
 

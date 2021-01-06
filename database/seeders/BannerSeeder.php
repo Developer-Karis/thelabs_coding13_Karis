@@ -16,7 +16,7 @@ class BannerSeeder extends Seeder
     {
         DB::table('banners')->insert([
             [
-                'logo' => 'big-logo.png',
+                'logo' => 'logo.png',
                 'slogan' => 'Get your freebie template now!'
             ],
         ]);

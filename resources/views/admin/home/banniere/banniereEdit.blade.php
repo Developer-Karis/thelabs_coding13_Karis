@@ -13,7 +13,7 @@
             @csrf
             <div class="form-group text-center mt-3">
                 <label for="">Image Carousel</label><br>
-                <img src="{{asset($editCarous->imageCarous)}}" alt="" height="200">
+                <img src="{{asset('img/'.$editCarous->imageCarous)}}" alt="" height="200">
             </div>
             <div class="form-group text-center mt-3">
                 <label for="">Mettre une nouvelle Image</label><br>

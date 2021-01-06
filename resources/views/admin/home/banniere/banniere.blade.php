@@ -16,7 +16,7 @@
                 <div class="card-body text-center">
                     <div class="form-group"><br>
                         <label for="">Logo Actuel</label><br>
-                        <img src="{{asset('img/'.$item->logo)}}" alt="" height="200"><br><br>
+                        <img src="{{asset('img/'.$item->logo)}}" alt="" height="120"><br><br>
                         <input type="file" name="updateImageLogo" id="">
                     </div>
                     <div class="form-group"><br>
@@ -72,7 +72,7 @@
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>
-                                <img src="{{asset($item->imageCarous)}}" height="120" width="200" alt="">
+                                <img src="{{asset('img/'.$item->imageCarous)}}" height="120" width="200" alt="">
                             </td>
                             <td>
                                 <a href="/edit-carous/{{$item->id}}" class="btn btn-primary mr-2">Edit</a>

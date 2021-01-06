@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 			ServicesRapidesSeeder::class,
 			HomePresentationSeeder::class,
 			HomeVideoSeeder::class,
+			HomeTestimonialSeeder::class,
 		]);
     }
 }
