@@ -121,8 +121,7 @@
 								<i class="{{ $servicesRapides->find($item)->icon }}"></i>
 							</div>
 							<h2>{{ $servicesRapides->find($item)->title }}</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
+							<p>{{ $servicesRapides->find($item)->para }}</p>
 						</div>
 				</div>
 				@endif
@@ -216,19 +215,19 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="service">
 						<div class="icon">
-							<i class="{{ $servicesRapides->find($item)->icon }}"></i>
+							<i class="{{$item->icon}}"></i>
 						</div>
 						<div class="service-text">
-							<h2>{{ $servicesRapides->find($item)->title }}</h2>
-							<p>{{ $servicesRapides->find($item)->para }}</p>
+							<h2>{{ $item->title }}</h2>
+							<p>{{ $item->para }}</p>
 						</div>
 					</div>
 				</div>
 				@endforeach
 			</div>
-			{{ $pagination->fragment('service')->links() }}
+			{{ $pagination->fragment('service')->links('vendor.pagination.bootstrap-4') }}
 			<div class="text-center">
-				<a href="" class="site-btn">Browse</a>
+				<a href="/services" class="site-btn">Browse</a>
 			</div>
 		</div>
 	</div>

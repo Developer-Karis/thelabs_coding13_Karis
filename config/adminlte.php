@@ -286,7 +286,7 @@ return [
                 ],
                 [
                     'text'    => 'Services',
-                    'url'     => '/services',
+                    'url'     => '/service',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [

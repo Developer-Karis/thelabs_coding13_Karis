@@ -44,7 +44,7 @@ class HomePageController extends Controller
 
         $order = HomeTestimonial::orderBy('created_at', 'DESC')->get();
 
-        $paginationServices = ServiceRapide::paginate(9);
+        $paginationServices = ServiceRapide::orderBy('id', 'DESC')->paginate(9);
 
         return view('labs.home', 
         compact(
@@ -297,5 +297,39 @@ class HomePageController extends Controller
     {
         $services = ServiceRapide::all();
         return view('admin.home.services.services', compact('services'));
+    }
+
+    public function adminStoreServices(HomePage $homePage, Request $request) 
+    {
+        $services = new ServiceRapide();
+        $services->icon = $request->newService;
+        $services->title = $request->newTitle;
+        $services->para = $request->newPara;
+        $services->save();
+        return redirect()->back()->with('success', 'Ajout effectué avec succès !');
+    }
+    
+    public function adminEditService(HomePage $homePage, Request $request, $id) 
+    {
+        $editService = ServiceRapide::find($id);
+        $services = ServiceRapide::all();
+        return view('admin.home.services.serviceEdit', compact('editService', 'services'));
+    }
+
+    public function adminUpdateService(HomePage $homePage, Request $request, $id) 
+    {
+        $updateService = ServiceRapide::find($id);
+        $updateService->icon = $request->changeService;
+        $updateService->title = $request->changeTitle;
+        $updateService->para = $request->changePara;
+        $updateService->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
+    }
+
+    public function adminDeleteService(HomePage $homePage, $id) 
+    {
+        $deleteService = ServiceRapide::find($id);
+        $deleteService->delete();
+        return redirect()->back();
     }
 }
