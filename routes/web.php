@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NavbarController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,15 @@ Route::get('/delete-team/{id}', [HomePageController::class, 'adminDeleteTeam']);
 // Ready
 Route::get('/ready', [HomePageController::class, 'adminShowReady']);
 Route::post('/update-ready/{id}', [HomePageController::class, 'adminUpdateReady']);
+
+// Contacts
+Route::get('/contacts', [HomePageController::class, 'adminShowContact']);
+Route::post('/update-contacts/{id}', [HomePageController::class, 'adminUpdateContact']);
+Route::post('/store-contact', [MailController::class, 'store']);
+
+// Footer
+Route::get('/footer', [HomePageController::class, 'adminShowFooter']);
+Route::post('/update-footer/{id}', [HomePageController::class, 'adminUpdateFooter']);
 
 
 

@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
 			HomeTestimonialSeeder::class,
 			HomeTeamSeeder::class,
 			HomeReadySeeder::class,
+			HomeContactSeeder::class,
+			FooterSeeder::class,
 		]);
     }
 }

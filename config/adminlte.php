@@ -301,7 +301,12 @@ return [
                 ],
                 [
                     'text'    => 'Infos contact / Formulaire',
-                    'url'     => '#',
+                    'url'     => '/contacts',    
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Footer',
+                    'url'     => '/footer',    
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
             ],

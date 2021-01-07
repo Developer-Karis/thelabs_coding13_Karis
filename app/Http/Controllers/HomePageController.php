@@ -12,6 +12,8 @@ use App\Models\HomeVideo;
 use App\Models\HomeTestimonial;
 use App\Models\HomeTeam;
 use App\Models\HomeReady;
+use App\Models\HomeContact;
+use App\Models\Footer;
 use Illuminate\Support\Str;
 use Image;
 use Illuminate\Support\Facades\Storage;
@@ -51,6 +53,10 @@ class HomePageController extends Controller
         $teams = HomeTeam::all();
 
         $readys = HomeReady::all();
+        
+        $contacts = HomeContact::all();
+
+        $footers = Footer::all();
 
         return view('labs.home', 
         compact(
@@ -68,7 +74,9 @@ class HomePageController extends Controller
         'testimonials', 
         'order',
         'teams',
-        'readys')
+        'readys',
+        'contacts',
+        'footers')
         )->with('pagination', $paginationServices);
     }
 
@@ -419,6 +427,42 @@ class HomePageController extends Controller
         $updateReady->sous_title = $request->sous_title;
         $updateReady->button = $request->button;
         $updateReady->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
+    }
+
+    public function adminShowContact(HomePage $homePage) 
+    {
+        $contacts = HomeContact::all();
+        return view('admin.home.contact.contact', compact('contacts'));
+    }
+
+    public function adminUpdateContact(HomePage $homePage, Request $request, $id) 
+    {
+        $updateContact = HomeContact::find($id);
+        $updateContact->title = $request->title;
+        $updateContact->para = $request->para;
+        $updateContact->mini_title = $request->mini_title;
+        $updateContact->address = $request->address;
+        $updateContact->postcode = $request->postcode;
+        $updateContact->phone_number = $request->phone_number;
+        $updateContact->website = $request->website;
+        $updateContact->buttonForm = $request->buttonForm;
+        $updateContact->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
+    }
+
+    public function adminShowFooter(HomePage $homePage) 
+    {
+        $footers = Footer::all();
+        return view('admin.home.footer.footer', compact('footers'));
+    }
+
+    public function adminUpdateFooter(HomePage $homePage, Request $request, $id) 
+    {
+        $updateFooter = Footer::find($id);
+        $updateFooter->para = $request->para;
+        $updateFooter->author = $request->author;
+        $updateFooter->save();
         return redirect()->back()->with('success', 'Modification effectué avec succès !');
     }
 }
