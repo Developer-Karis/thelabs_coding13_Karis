@@ -17,6 +17,7 @@ class CreateServiceRapidesTable extends Migration
             $table->id();
             $table->string('icon');
             $table->string('title');
+            $table->text('para', 105);
             $table->timestamps();
         });
     }

@@ -17,39 +17,48 @@ class ServicesRapidesSeeder extends Seeder
         DB::table('service_rapides')->insert([
             [
                 'icon'  => 'flaticon-023-flask',
-                'title' => 'GET IN THE LAB'
+                'title' => 'GET IN THE LAB',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-011-compass',
-                'title' => 'PROJECTS ONLINE'
+                'title' => 'PROJECTS ONLINE',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-037-idea',
-                'title' => 'SMART MARKETING'
+                'title' => 'SMART MARKETING',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-039-vector',
-                'title' => 'SOCIAL MEDIA'
+                'title' => 'SOCIAL MEDIA',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-036-brainstorming',
-                'title' => 'BRAINSTORMING'
+                'title' => 'BRAINSTORMING',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-026-search',
-                'title' => 'DOCUMENTED'
+                'title' => 'DOCUMENTED',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-018-laptop-1',
-                'title' => 'RESPONSIVE'
+                'title' => 'RESPONSIVE',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-043-sketch',
-                'title' => 'RETINA READY'
+                'title' => 'RETINA READY',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
             [
                 'icon'  => 'flaticon-012-cube',
-                'title' => 'ULTRA MODERN'
+                'title' => 'ULTRA MODERN',
+                'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
             ],
         ]);
     }

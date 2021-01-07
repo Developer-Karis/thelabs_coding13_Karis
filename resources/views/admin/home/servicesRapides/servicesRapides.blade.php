@@ -15,6 +15,7 @@
             <div class="card shadow mb-5 mt-3 bg-white rounded card-warning text-center">
                 <i class="{{ $servicesRapides->find($item)->icon }} fa-5x"></i>
                 <h5>{{ $servicesRapides->find($item)->title }}</h5>
+                <p>{{ $servicesRapides->find($item)->para }}</p>
             </div>
     </div>
     @endif

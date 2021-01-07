@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label for="">Paragraphe</label>
                         <textarea name="newPara" rows="6" class="form-control w-50 m-auto" style="resize: none;">
-                            {{old('newPara')}}
+                            
                         </textarea>
                     </div>
                     <div class="form-group">

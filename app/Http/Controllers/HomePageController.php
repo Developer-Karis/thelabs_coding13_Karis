@@ -44,6 +44,8 @@ class HomePageController extends Controller
 
         $order = HomeTestimonial::orderBy('created_at', 'DESC')->get();
 
+        $paginationServices = ServiceRapide::paginate(9);
+
         return view('labs.home', 
         compact(
         'navbars', 
@@ -59,7 +61,7 @@ class HomePageController extends Controller
         'linkVideo',
         'testimonials', 
         'order')
-        );
+        )->with('pagination', $paginationServices);
     }
 
     /**
@@ -289,5 +291,11 @@ class HomePageController extends Controller
         $deleteTestimonial = HomeTestimonial::find($id);
         $deleteTestimonial->delete();
         return redirect()->back();
+    }
+
+    public function adminShowServices(HomePage $homePage) 
+    {
+        $services = ServiceRapide::all();
+        return view('admin.home.services.services', compact('services'));
     }
 }

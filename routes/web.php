@@ -75,5 +75,8 @@ Route::post('/update-title-testimonial/{id}', [HomePageController::class, 'admin
 Route::post('/update-testimonial/{id}', [HomePageController::class, 'adminUpdateTestimonial']);
 Route::get('/delete-testimonial/{id}', [HomePageController::class, 'adminDeleteTestimonial']);
 
+// Home Service
+Route::get('/services', [HomePageController::class, 'adminShowServices']);
+
 
 

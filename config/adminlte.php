@@ -285,8 +285,8 @@ return [
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
-                    'text'    => 'Service',
-                    'url'     => '#',
+                    'text'    => 'Services',
+                    'url'     => '/services',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
