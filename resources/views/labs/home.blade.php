@@ -243,29 +243,15 @@
 			</div>
 			<div class="row">
 				<!-- single member -->
+				@foreach ($teams as $item)
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/1.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Project Manager</h3>
+						<img src="{{asset('img/team/'.$item->imageTeam)}}" alt="">
+						<h2>{{$item->fullName}}</h2>
+						<h3>{{$item->function}}</h3>
 					</div>
 				</div>
-				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="img/team/2.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Junior developer</h3>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="img/team/3.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Digital designer</h3>
-					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -276,15 +262,17 @@
 	<div class="promotion-section">
 		<div class="container">
 			<div class="row">
+				@foreach ($readys as $item)
 				<div class="col-md-9">
-					<h2>Are you ready to stand out?</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est.</p>
+					<h2>{{$item->title}}</h2>
+					<p>{{$item->sous_title}}</p>
 				</div>
 				<div class="col-md-3">
 					<div class="promo-btn-area">
-						<a href="" class="site-btn btn-2">Browse</a>
+						<a href="/contact" class="site-btn btn-2">{{$item->button}}</a>
 					</div>
 				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>

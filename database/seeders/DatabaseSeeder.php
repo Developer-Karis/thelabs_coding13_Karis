@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
 			HomePresentationSeeder::class,
 			HomeVideoSeeder::class,
 			HomeTestimonialSeeder::class,
+			HomeTeamSeeder::class,
+			HomeReadySeeder::class,
 		]);
     }
 }

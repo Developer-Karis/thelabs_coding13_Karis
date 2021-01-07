@@ -291,12 +291,12 @@ return [
                 ],
                 [
                     'text'    => 'Team',
-                    'url'     => '#',
+                    'url'     => '/team',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
                     'text'    => 'Ready?',
-                    'url'     => '#',
+                    'url'     => '/ready',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [

@@ -82,5 +82,18 @@ Route::get('/edit-service/{id}', [HomePageController::class, 'adminEditService']
 Route::post('/update-service/{id}', [HomePageController::class, 'adminUpdateService']);
 Route::get('/delete-service/{id}', [HomePageController::class, 'adminDeleteService']);
 
+// Team
+Route::get('/team', [HomePageController::class, 'adminShowTeam']);
+Route::post('/store-team', [HomePageController::class, 'adminStoreTeam']);
+Route::post('/update-title-team/{id}', [HomePageController::class, 'adminUpdateTitleTeam']);
+Route::get('/edit-team/{id}', [HomePageController::class, 'adminEditTeam']);
+Route::post('/update-team/{id}', [HomePageController::class, 'adminUpdateTeam']);
+Route::get('/delete-team/{id}', [HomePageController::class, 'adminDeleteTeam']);
+
+// Ready
+Route::get('/ready', [HomePageController::class, 'adminShowReady']);
+Route::post('/update-ready/{id}', [HomePageController::class, 'adminUpdateReady']);
+
+
 
 

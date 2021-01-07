@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="">Choisis une Icône</label>
                         <select name="newService" class="form-control m-auto" style="width: 35%;">
-                            @foreach ($services as $item)
+                            @foreach ($services->unique('icon') as $item)
                             <option value="{{$item->icon}}">
                                 {{$item->icon}}</option>
                             @endforeach

@@ -9,14 +9,15 @@
             <div class="card-header mb-3">
                 <h3 class="card-title font-weight-bold">Ajouter un Testimonial</h3>
             </div>
-            <form action="/store-testimonial" method="post">
+            <form action="/store-team" method="post">
                 @csrf
                 <div class="text-center">
-                    <div class="form-group">
-                        <label for="">Paragraphe</label>
-                        <textarea name="newPara" rows="6" class="form-control w-50 m-auto" style="resize: none;">
-
-                        </textarea>
+                    <label for="">Choisis une image de Team</label>
+                    <div class="form-group form-check">
+                        @foreach ($teams->unique('imageTeam') as $item)
+                        <input type="radio" name="radAnswer" value="{{$item->imageTeam}}" />
+                        <img src="{{asset('img/team/'.$item->imageTeam)}}" alt="" height="150" class="mr-5 ml-2">
+                        @endforeach
                     </div>
                     <div class="form-group">
                         <label for="">Full Name</label>
@@ -25,13 +26,6 @@
                     <div class="form-group">
                         <label for="">Function</label>
                         <input type="text" name="newFunction" class="form-control w-50 m-auto">
-                    </div>
-                    <label for="">Choisis l'Avatar</label>
-                    <div class="form-group form-check">
-                        @foreach ($testimonials->unique('avatar') as $item)
-                        <input type="radio" name="radAnswer" value="{{$item->avatar}}" />
-                        <img src="{{asset('img/'.$item->avatar)}}" alt="" class="mr-5 ml-2">
-                        @endforeach
                     </div>
                 </div>
                 <div class="card-footer">
@@ -45,13 +39,12 @@
             <div class="card-header mb-3">
                 <h3 class="card-title font-weight-bold">Modifier le Titre Principal</h3>
             </div>
-            <form action="/update-title-testimonial/{{$testimonials[0]->id}}" method="post">
+            <form action="/update-title-team/{{$teams[0]->id}}" method="post">
                 @csrf
                 <div class="text-center">
                     <div class="form-group mt-3">
                         <label for="">Titre</label>
-                        <input type="text" name="title" class="form-control w-50 m-auto"
-                            value="{{$testimonials[0]->title}}">
+                        <input type="text" name="title" class="form-control w-50 m-auto" value="{{$teams[0]->title}}">
                     </div>
                 </div>
                 <div class="card-footer">
@@ -66,7 +59,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-teal">
-                <h5 class="text-dark font-weight-bold">Toutes les infos des Testimonials</h5>
+                <h5 class="text-dark font-weight-bold">Toutes les infos des Teams</h5>
             </div>
             <div class="card-body">
                 <table class="table">
@@ -80,17 +73,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($order as $item)
+                        @foreach ($teams as $item)
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>
-                                <img src="{{asset('img/'.$item->avatar)}}" height="100" width="100" alt="">
+                                <img src="{{asset('img/team/'.$item->imageTeam)}}" height="120" width="100" alt="">
                             </td>
                             <td>{{$item->fullName}}</td>
                             <td>{{$item->function}}</td>
                             <td>
-                                <a href="/edit-testimonial/{{$item->id}}" class="btn btn-primary mr-2">Edit</a>
-                                <a href="/delete-testimonial/{{$item->id}}" class="btn btn-danger">Delete</a>
+                                <a href="/edit-team/{{$item->id}}" class="btn btn-primary mr-2">Edit</a>
+                                <a href="/delete-team/{{$item->id}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         @endforeach

@@ -10,6 +10,8 @@ use App\Models\ServiceRapide;
 use App\Models\HomePresentation;
 use App\Models\HomeVideo;
 use App\Models\HomeTestimonial;
+use App\Models\HomeTeam;
+use App\Models\HomeReady;
 use Illuminate\Support\Str;
 use Image;
 use Illuminate\Support\Facades\Storage;
@@ -46,6 +48,10 @@ class HomePageController extends Controller
 
         $paginationServices = ServiceRapide::orderBy('id', 'DESC')->paginate(9);
 
+        $teams = HomeTeam::all();
+
+        $readys = HomeReady::all();
+
         return view('labs.home', 
         compact(
         'navbars', 
@@ -60,7 +66,9 @@ class HomePageController extends Controller
         'videos',
         'linkVideo',
         'testimonials', 
-        'order')
+        'order',
+        'teams',
+        'readys')
         )->with('pagination', $paginationServices);
     }
 
@@ -254,6 +262,7 @@ class HomePageController extends Controller
         } else if ($request->radAnswer == 'avatar/02.jpg') {
             $storeTestimonial->avatar = 'avatar/02.jpg';        
         }
+
         $storeTestimonial->para = $request->newPara;
         $storeTestimonial->fullName = $request->newFullName;
         $storeTestimonial->function = $request->newFunction;
@@ -331,5 +340,85 @@ class HomePageController extends Controller
         $deleteService = ServiceRapide::find($id);
         $deleteService->delete();
         return redirect()->back();
+    }
+
+    public function adminShowTeam(HomePage $homePage) 
+    {
+        $teams = HomeTeam::all();
+        return view('admin.home.team.team', compact('teams'));  
+    }
+
+    public function adminStoreTeam(HomePage $homePage, Request $request) 
+    {
+        $storeTeam = new HomeTeam();
+
+        if ($request->radAnswer == '1.jpg') {
+            $storeTeam->imageTeam = '1.jpg';        
+        } else if ($request->radAnswer == '2.jpg') {
+            $storeTeam->imageTeam = '2.jpg';        
+        } else if ($request->radAnswer == '3.jpg') {
+            $storeTeam->imageTeam = '3.jpg';
+        }
+
+        $storeTeam->fullName = $request->newFullName;
+        $storeTeam->function = $request->newFunction;
+        $storeTeam->save();
+        return redirect()->back();  
+    }
+
+    public function adminUpdateTitleTeam(HomePage $homePage, Request $request, $id) 
+    {
+        $updateTitleTeam = HomeTeam::find($id);
+        $updateTitleTeam->title = $request->title;
+        $updateTitleTeam->save();
+        return redirect()->back();
+    }
+
+    public function adminEditTeam(HomePage $homePage, $id) 
+    {
+        $editTeam = HomeTeam::find($id);
+        $teams = HomeTeam::all();
+        return view('admin.home.team.teamEdit', compact('editTeam', 'teams'));
+    }
+
+    public function adminUpdateTeam(HomePage $homePage, Request $request, $id) 
+    {
+        $storeTeam = HomeTeam::find($id);
+
+        if ($request->radAnswer == '1.jpg') {
+            $storeTeam->imageTeam = '1.jpg';        
+        } else if ($request->radAnswer == '2.jpg') {
+            $storeTeam->imageTeam = '2.jpg';        
+        } else if ($request->radAnswer == '3.jpg') {
+            $storeTeam->imageTeam = '3.jpg';
+        }
+
+        $storeTeam->fullName = $request->changeFullName;
+        $storeTeam->function = $request->changeFunction;
+        $storeTeam->save();
+        return redirect('/team');
+    }
+
+    public function adminDeleteTeam(HomePage $homePage, $id) 
+    {
+        $deleteTeam = HomeTeam::find($id);
+        $deleteTeam->delete();
+        return redirect()->back();
+    }
+
+    public function adminShowReady(HomePage $homePage) 
+    {
+        $readys = HomeReady::all();
+        return view('admin.home.ready.ready', compact('readys'));
+    }
+
+    public function adminUpdateReady(HomePage $homePage, Request $request, $id) 
+    {
+        $updateReady = HomeReady::find($id);
+        $updateReady->title = $request->title;
+        $updateReady->sous_title = $request->sous_title;
+        $updateReady->button = $request->button;
+        $updateReady->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
     }
 }

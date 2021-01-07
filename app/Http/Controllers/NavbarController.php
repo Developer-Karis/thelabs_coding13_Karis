@@ -85,12 +85,6 @@ class NavbarController extends Controller
         //
     }
 
-    public function links(Navbar $navbar) 
-    {
-        $navbars = Navbar::all();
-        return view('admin.navbar.navbar-links', compact('navbars'));
-    }
-
     public function updateLinks(Navbar $navbar, Request $request, $id) 
     {
         $updateLinks = Navbar::find($id);
