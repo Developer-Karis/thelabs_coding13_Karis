@@ -135,10 +135,10 @@
 	<!-- About contant -->
 	<div class="about-contant">
 		<div class="container">
-			@foreach ($presentations as $item)
 			<div class="section-title">
 				<h2>{{$start}}<span>{{$slice}}</span>{{$end}}</h2>
 			</div>
+			@foreach ($presentations as $item)
 			<div class="row">
 				<div class="col-md-6">
 					<p>{{$item->para1}}</p>
@@ -207,7 +207,7 @@
 	<div class="services-section spad" id="service">
 		<div class="container">
 			<div class="section-title dark">
-				<h2>Get in <span>the Lab</span> and see the services</h2>
+				<h2>{{$startService}}<span>{{$sliceService}}</span>{{$endService}}</h2>
 			</div>
 			<div class="row">
 				<!-- single service -->
@@ -239,7 +239,7 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="section-title">
-				<h2>Get in <span>the Lab</span> and meet the team</h2>
+				<h2>{{$startTeam}}<span>{{$sliceTeam}}</span>{{$endTeam}}</h2>
 			</div>
 			<div class="row">
 				<!-- single member -->

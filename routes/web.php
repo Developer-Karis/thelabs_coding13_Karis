@@ -80,6 +80,7 @@ Route::get('/delete-testimonial/{id}', [HomePageController::class, 'adminDeleteT
 Route::get('/service', [HomePageController::class, 'adminShowServices']);
 Route::post('/store-service', [HomePageController::class, 'adminStoreServices']);
 Route::get('/edit-service/{id}', [HomePageController::class, 'adminEditService']);
+Route::post('/update-title-service/{id}', [HomePageController::class, 'adminUpdateTitleService']);
 Route::post('/update-service/{id}', [HomePageController::class, 'adminUpdateService']);
 Route::get('/delete-service/{id}', [HomePageController::class, 'adminDeleteService']);
 

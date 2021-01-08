@@ -15,6 +15,7 @@ class CreateServiceRapidesTable extends Migration
     {
         Schema::create('service_rapides', function (Blueprint $table) {
             $table->id();
+            $table->string('main_title')->nullable();
             $table->string('icon');
             $table->string('title');
             $table->text('para', 105);

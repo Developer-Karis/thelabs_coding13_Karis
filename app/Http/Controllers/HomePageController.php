@@ -44,13 +44,24 @@ class HomePageController extends Controller
         $end = Str::after($select, ')');
         $slice = Str::between($select, '(', ')');
 
+        $selectService = $servicesRapides[0]->title;
+        $startService = Str::before($selectService, '(');
+        $endService = Str::after($selectService, ')');
+        $sliceService = Str::between($selectService, '(', ')');
+
+        
         $linkVideo = substr($videos[0]->video, 0, strpos($videos[0]->video, "&"));
-
+        
         $order = HomeTestimonial::orderBy('created_at', 'DESC')->get();
-
+        
         $paginationServices = ServiceRapide::orderBy('id', 'DESC')->paginate(9);
-
+        
         $teams = HomeTeam::all();
+        
+        $selectTeam = $teams[0]->title;
+        $startTeam = Str::before($selectTeam, '(');
+        $endTeam = Str::after($selectTeam, ')');
+        $sliceTeam = Str::between($selectTeam, '(', ')');
 
         $readys = HomeReady::all();
         
@@ -69,6 +80,12 @@ class HomePageController extends Controller
         'start', 
         'end', 
         'slice',
+        'startService',
+        'endService',
+        'sliceService',
+        'startTeam',
+        'endTeam',
+        'sliceTeam',
         'videos',
         'linkVideo',
         'testimonials', 
@@ -331,6 +348,14 @@ class HomePageController extends Controller
         $editService = ServiceRapide::find($id);
         $services = ServiceRapide::all();
         return view('admin.home.services.serviceEdit', compact('editService', 'services'));
+    }
+
+    public function adminUpdateTitleService(HomePage $homePage, Request $request, $id) 
+    {
+        $updateTitleService = ServiceRapide::find($id);
+        $updateTitleService->main_title = $request->main_title;
+        $updateTitleService->save();
+        return redirect()->back();
     }
 
     public function adminUpdateService(HomePage $homePage, Request $request, $id) 
