@@ -44,7 +44,7 @@ class HomePageController extends Controller
         $end = Str::after($select, ')');
         $slice = Str::between($select, '(', ')');
 
-        $selectService = $servicesRapides[0]->title;
+        $selectService = $servicesRapides[0]->main_title;
         $startService = Str::before($selectService, '(');
         $endService = Str::after($selectService, ')');
         $sliceService = Str::between($selectService, '(', ')');

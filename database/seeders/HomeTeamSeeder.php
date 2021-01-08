@@ -16,7 +16,7 @@ class HomeTeamSeeder extends Seeder
     {
         DB::table('home_teams')->insert([
             [
-                'title' => 'GET IN THE LAB AND MEET THE TEAM',
+                'title' => 'GET IN THE LAB AND MEET THE (TEAM)',
                 'imageTeam' => '1.jpg',
                 'fullName'  => 'Christinne Williams',
                 'function'  => 'PROJECT MANAGER'

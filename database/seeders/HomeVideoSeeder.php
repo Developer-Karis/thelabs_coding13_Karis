@@ -15,7 +15,7 @@ class HomeVideoSeeder extends Seeder
     public function run()
     {
         DB::table('home_videos')->insert([
-            'video' => 'https://www.youtube.com/watch?v=JgHfx2v9zOU',
+            'video' => 'https://www.youtube.com/watch?v=LSFX9vrwJf8&ab_channel=TopGear',
         ]);
     }
 }

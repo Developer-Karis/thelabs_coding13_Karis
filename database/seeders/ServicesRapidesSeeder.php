@@ -16,7 +16,7 @@ class ServicesRapidesSeeder extends Seeder
     {
         DB::table('service_rapides')->insert([
             [
-                'main_title' => 'GET IN THE LAB AND SEE THE SERVICES',
+                'main_title' => 'GET IN THE LAB AND SEE THE (SERVICES)',
                 'icon'  => 'flaticon-023-flask',
                 'title' => 'GET IN THE LAB',
                 'para'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..',
