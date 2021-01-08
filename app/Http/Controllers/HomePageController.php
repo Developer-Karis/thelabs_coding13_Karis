@@ -49,7 +49,6 @@ class HomePageController extends Controller
         $endService = Str::after($selectService, ')');
         $sliceService = Str::between($selectService, '(', ')');
 
-        
         $linkVideo = substr($videos[0]->video, 0, strpos($videos[0]->video, "&"));
         
         $order = HomeTestimonial::orderBy('created_at', 'DESC')->get();
