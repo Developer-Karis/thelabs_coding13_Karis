@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use App\Models\Navbar;
+use App\Models\Banner;
+use App\Models\ServiceRapide;
+use App\Models\BannerHeader;
+use App\Models\HomePresentation;
+use App\Models\HomeContact;
+use App\Models\Footer;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -16,7 +23,51 @@ class ServiceController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('labs.services', compact('navbars'));
+        $banners = Banner::all();
+        $servicesRapides = ServiceRapide::all();
+
+        $selectService = $servicesRapides[0]->main_title;
+        $startService = Str::before($selectService, '(');
+        $endService = Str::after($selectService, ')');
+        $sliceService = Str::between($selectService, '(', ')');
+
+        $paginationServices = ServiceRapide::orderBy('id', 'DESC')->paginate(9);
+
+        $bannerHeader = BannerHeader::all();
+
+        $presentations = HomePresentation::all();
+        
+        $select = $presentations[0]->title;
+        $start = Str::before($select, '(');
+        $end = Str::after($select, ')');
+        $slice = Str::between($select, '(', ')');
+
+        $servicesPrimes = ServiceRapide::orderBy('id', 'DESC')->take(3)->get();
+        $servicesPrimes2 = ServiceRapide::orderBy('id', 'DESC')->skip(3)->take(3)->get();
+
+        $contacts = HomeContact::all();
+
+        $footers = Footer::all();
+
+        return view('labs.services', 
+        compact(
+        'navbars', 
+        'banners', 
+        'servicesRapides', 
+        'startService', 
+        'endService', 
+        'sliceService', 
+        'paginationServices',
+        'bannerHeader',
+        'presentations',
+        'start',
+        'end',
+        'slice',
+        'servicesPrimes',
+        'servicesPrimes2',
+        'contacts',
+        'footers'
+        ))->with('pagination', $paginationServices);
     }
 
     /**
@@ -83,5 +134,26 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
+    }
+
+    public function adminShowBannerHeaderService(Service $service) 
+    {
+        $bannerHeader = BannerHeader::all();
+        return view('admin.services.bannerHeader.banniere', compact('bannerHeader'));
+    }
+
+    public function adminUpdateBannerHeaderService(Service $service, Request $request, $id) 
+    {
+        $updateBannerHeaderService = BannerHeader::find($id);
+
+        $request->validate([
+            'title' => 'min:5',
+        ]);
+
+        $updateBannerHeaderService->title = $request->title;
+        $updateBannerHeaderService->lienPrecedent = $request->lienPrecedent;
+        $updateBannerHeaderService->lienActuel = $request->lienActuel;
+        $updateBannerHeaderService->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
     }
 }

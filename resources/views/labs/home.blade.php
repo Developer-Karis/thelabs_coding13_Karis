@@ -39,7 +39,7 @@
 
 	<!-- Header section -->
 	<header class="header-section">
-		<div class="logo" style="padding-top: 5px !important;">
+		<div class="logo">
 			<img src="{{asset('img/small-'.$banners[0]->logo)}}" alt=""><!-- Logo -->
 		</div>
 		<!-- Navigation -->
@@ -227,7 +227,7 @@
 			</div>
 			{{ $pagination->fragment('service')->links('vendor.pagination.bootstrap-4') }}
 			<div class="text-center">
-				<a href="/services" class="site-btn">Browse</a>
+				<a href="/services" class="site-btn">{{$servicesRapides[0]->button}}</a>
 			</div>
 		</div>
 	</div>

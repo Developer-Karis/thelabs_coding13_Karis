@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
 			HomeReadySeeder::class,
 			HomeContactSeeder::class,
 			FooterSeeder::class,
+			BannerHeaderSeeder::class,
+			ContactSeeder::class,
 		]);
     }
 }

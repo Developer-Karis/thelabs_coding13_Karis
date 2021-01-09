@@ -353,6 +353,7 @@ class HomePageController extends Controller
     {
         $updateTitleService = ServiceRapide::find($id);
         $updateTitleService->main_title = $request->main_title;
+        $updateTitleService->button = $request->button;
         $updateTitleService->save();
         return redirect()->back();
     }

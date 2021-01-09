@@ -43,7 +43,8 @@ Route::get('/blog-post', [BlogPostController::class, 'index']);
 // Contact
 Route::get('/contact', [ContactController::class, 'index']);
 
-// AdminLte
+// Home Page //
+
 // Home Menu
 Route::get('/menu', [NavbarController::class, 'index']);
 Route::post('/update-links/{id}', [NavbarController::class, 'updateLinks']);
@@ -104,6 +105,16 @@ Route::post('/store-contact', [MailController::class, 'store']);
 // Footer
 Route::get('/footer', [HomePageController::class, 'adminShowFooter']);
 Route::post('/update-footer/{id}', [HomePageController::class, 'adminUpdateFooter']);
+
+// Services Page //
+Route::get('/bannerHeader', [ServiceController::class, 'adminShowBannerHeaderService']);
+Route::post('/update-bannerHeader-services/{id}', [ServiceController::class, 'adminUpdateBannerHeaderService']);
+
+// Contact Page
+Route::get('/banniereContact', [ContactController::class, 'adminShowBannerHeaderContact']);
+Route::post('/update-bannerHeader-contact/{id}', [ContactController::class, 'adminUpdateBannerHeaderContact']);
+Route::get('/googleMap', [ContactController::class, 'adminShowGoogleMap']);
+Route::post('/update-googleMap/{id}', [ContactController::class, 'adminUpdateGoogleMap']);
 
 
 

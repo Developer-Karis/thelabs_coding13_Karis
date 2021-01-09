@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Navbar;
+use App\Models\Banner;
+use App\Models\BannerHeader;
+use App\Models\HomeContact;
+use App\Models\Footer;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -16,7 +21,35 @@ class ContactController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('labs.contact', compact('navbars'));
+        $banners = Banner::all();
+
+        $bannerHeader = BannerHeader::all();
+
+        $contacts = HomeContact::all();
+
+        $footers = Footer::all();
+
+        $contact = Contact::all();
+
+        $selectAddress = $contact[0]->address;
+        $start = Str::before($selectAddress, 'q=');
+        $end = Str::after($selectAddress, '(');
+        $slice = Str::between($selectAddress, 'q=', '+');
+        $concatAll = $start . 'q=' . $slice . '+(' . $end;
+        
+        return view('labs.contact', 
+        compact(
+        'navbars',
+        'banners',
+        'bannerHeader',
+        'contacts',
+        'footers',
+        'start',
+        'end',
+        'slice',
+        'contact',
+        'concatAll'
+        ));
     }
 
     /**
@@ -83,5 +116,40 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         //
+    }
+
+    public function adminShowBannerHeaderContact(Contact $contact) 
+    {
+        $bannerHeader = BannerHeader::all();
+        return view('admin.contact.banniere', compact('bannerHeader'));
+    }
+
+    public function adminUpdateBannerHeaderContact(Contact $contact, Request $request, $id) 
+    {
+        $updateBannerHeaderContact = BannerHeader::find($id);
+
+        $request->validate([
+            'title' => 'min:5',
+        ]);
+
+        $updateBannerHeaderContact->title = $request->title;
+        $updateBannerHeaderContact->lienPrecedent = $request->lienPrecedent;
+        $updateBannerHeaderContact->lienActuel = $request->lienActuel;
+        $updateBannerHeaderContact->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
+    }
+
+    public function adminShowGoogleMap(Contact $contact) 
+    {
+        $contact = Contact::all();
+        return view('admin.contact.googleMap', compact('contact'));
+    }
+
+    public function adminUpdateGoogleMap(Contact $contact, Request $request, $id) 
+    {
+        $updateGoogleMap = Contact::find($id);
+        $updateGoogleMap->nom = $request->nom;
+        $updateGoogleMap->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
     }
 }

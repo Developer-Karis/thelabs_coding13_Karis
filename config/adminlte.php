@@ -316,23 +316,8 @@ return [
             'icon'    => 'fas fa-cog fa-spin mr-2',
             'submenu' => [
                 [
-                    'text'    => 'Menu',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
                     'text'    => 'Bannière',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Services',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Services Primés',
-                    'url'     => '#',
+                    'url'     => '/bannerHeader',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
@@ -345,27 +330,12 @@ return [
                     'url'     => '#',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
-                [
-                    'text'    => 'Formulaire de contact',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Infos contact',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
             ],
         ],
         [
             'text'    => 'Blog',
             'icon'    => 'fas fa-cog fa-spin mr-2',
             'submenu' => [
-                [
-                    'text'    => 'Menu',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
                 [
                     'text'    => 'Bannière',
                     'url'     => '#',
@@ -398,28 +368,13 @@ return [
             'icon'    => 'fas fa-cog fa-spin mr-2',
             'submenu' => [
                 [
-                    'text'    => 'Menu',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
                     'text'    => 'Bannière',
-                    'url'     => '#',
+                    'url'     => '/banniereContact',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
                     'text'    => 'Google Map',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Formulaire de contact',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Infos Contact',
-                    'url'     => '#',
+                    'url'     => '/googleMap',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
             ],

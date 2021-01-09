@@ -55,7 +55,7 @@
     <div class="col-6">
         <div class="card shadow bg-white rounded card-warning">
             <div class="card-header mb-3">
-                <h3 class="card-title font-weight-bold">Modifier le Titre Principal</h3>
+                <h3 class="card-title font-weight-bold">Modifier le Titre Principal et le Button</h3>
             </div>
             <form action="/update-title-service/{{$services[0]->id}}" method="post">
                 @csrf
@@ -64,6 +64,11 @@
                         <label for="">Titre</label>
                         <input type="text" name="main_title" class="form-control w-50 m-auto"
                             value="{{$services[0]->main_title}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Button</label>
+                        <input type="text" name="button" class="form-control w-50 m-auto"
+                            value="{{$services[0]->button}}">
                     </div>
                 </div>
                 <div class="card-footer">
