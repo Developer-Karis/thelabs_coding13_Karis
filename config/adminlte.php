@@ -343,22 +343,17 @@ return [
                 ],
                 [
                     'text'    => 'Articles',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Recherche',
-                    'url'     => '#',
+                    'url'     => '/articles',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
                     'text'    => 'Catégories',
-                    'url'     => '#',
+                    'url'     => '/categories',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
                     'text'    => 'Tags',
-                    'url'     => '#',
+                    'url'     => '/tags',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
             ],

@@ -30,6 +30,11 @@ class DatabaseSeeder extends Seeder
 			BannerHeaderSeeder::class,
 			ContactSeeder::class,
 			TeamStaticSeeder::class,
+			BlogTagSeeder::class,
+			BlogCategoriesSeeder::class,
+			BlogArticleSeeder::class,
+			BlogArticleCategoriesSeeder::class,
+			BlogArticleTagSeeder::class,
 		]);
     }
 }

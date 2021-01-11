@@ -120,5 +120,24 @@ Route::post('/update-googleMap/{id}', [ContactController::class, 'adminUpdateGoo
 // Blog Page
 Route::get('/banniereBlog', [BlogController::class, 'adminShowBannerHeaderBlog']);
 Route::post('/update-bannerHeader-blog/{id}', [BlogController::class, 'adminUpdateBannerHeaderBlog']);
+Route::get('/articles', [BlogController::class, 'adminShowArticles']);
+Route::post('/store-article', [BlogController::class, 'adminCreateArticle']);
+Route::get('/edit-article/{id}', [BlogController::class, 'adminShowEditArticle']);
+Route::post('/update-article/{id}', [BlogController::class, 'adminUpdateArticle']);
+Route::get('/delete-article/{id}', [BlogController::class, 'adminDeletetArticle']);
+
+Route::get('/categories', [BlogController::class, 'adminShowCategories']);
+Route::post('/store-categorie', [BlogController::class, 'adminCreateCategorie']);
+Route::get('/edit-categorie/{id}', [BlogController::class, 'adminEditCategorie']);
+Route::post('/update-categorie/{id}', [BlogController::class, 'adminUpdateCategorie']);
+Route::get('/delete-categorie/{id}', [BlogController::class, 'adminDeleteCategorie']);
+
+Route::get('/tags', [BlogController::class, 'adminShowTags']);
+Route::post('/store-tag', [BlogController::class, 'adminCreateTag']);
+Route::get('/edit-tag/{id}', [BlogController::class, 'adminEditTag']);
+Route::post('/update-tag/{id}', [BlogController::class, 'adminUpdateTag']);
+Route::get('/delete-tag/{id}', [BlogController::class, 'adminDeleteTag']);
+
+
 
 
