@@ -24,13 +24,13 @@ class HomeTeamSeeder extends Seeder
             [
                 'title' => null,
                 'imageTeam' => '2.jpg',
-                'fullName'  => 'Christinne Williams',
+                'fullName'  => 'Juliette Fournier',
                 'function'  => 'JUNIOR DEVELOPER'
             ],
             [
                 'title' => null,
                 'imageTeam' => '3.jpg',
-                'fullName'  => 'Christinne Williams',
+                'fullName'  => 'Lucas Portier',
                 'function'  => 'DIGITAL DESIGNER'
             ],
         ]);

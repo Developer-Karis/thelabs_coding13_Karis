@@ -92,6 +92,7 @@ Route::post('/update-title-team/{id}', [HomePageController::class, 'adminUpdateT
 Route::get('/edit-team/{id}', [HomePageController::class, 'adminEditTeam']);
 Route::post('/update-team/{id}', [HomePageController::class, 'adminUpdateTeam']);
 Route::get('/delete-team/{id}', [HomePageController::class, 'adminDeleteTeam']);
+Route::post('/update-place-team', [HomePageController::class, 'adminUpdatePlaceTeam']);
 
 // Ready
 Route::get('/ready', [HomePageController::class, 'adminShowReady']);
@@ -116,6 +117,8 @@ Route::post('/update-bannerHeader-contact/{id}', [ContactController::class, 'adm
 Route::get('/googleMap', [ContactController::class, 'adminShowGoogleMap']);
 Route::post('/update-googleMap/{id}', [ContactController::class, 'adminUpdateGoogleMap']);
 
-
+// Blog Page
+Route::get('/banniereBlog', [BlogController::class, 'adminShowBannerHeaderBlog']);
+Route::post('/update-bannerHeader-blog/{id}', [BlogController::class, 'adminUpdateBannerHeaderBlog']);
 
 

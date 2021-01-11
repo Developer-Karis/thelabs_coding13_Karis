@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
 			FooterSeeder::class,
 			BannerHeaderSeeder::class,
 			ContactSeeder::class,
+			TeamStaticSeeder::class,
 		]);
     }
 }

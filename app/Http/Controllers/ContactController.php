@@ -27,15 +27,9 @@ class ContactController extends Controller
 
         $contacts = HomeContact::all();
 
-        $footers = Footer::all();
-
         $contact = Contact::all();
 
-        $selectAddress = $contact[0]->address;
-        $start = Str::before($selectAddress, 'q=');
-        $end = Str::after($selectAddress, '(');
-        $slice = Str::between($selectAddress, 'q=', '+');
-        $concatAll = $start . 'q=' . $slice . '+(' . $end;
+        $footers = Footer::all();
         
         return view('labs.contact', 
         compact(
@@ -44,11 +38,7 @@ class ContactController extends Controller
         'bannerHeader',
         'contacts',
         'footers',
-        'start',
-        'end',
-        'slice',
-        'contact',
-        'concatAll'
+        'contact'
         ));
     }
 
@@ -149,6 +139,16 @@ class ContactController extends Controller
     {
         $updateGoogleMap = Contact::find($id);
         $updateGoogleMap->nom = $request->nom;
+
+        $selectAddress = $updateGoogleMap->address;
+        $start = Str::before($selectAddress, 'q=');
+        $end = Str::after($selectAddress, '&t');
+        $slice = Str::between($selectAddress, 'q=', '&t');
+        $myAdress = $updateGoogleMap->nom;
+        $concatAll = $start . 'q=' . $myAdress . '&t' . $end;
+
+        $updateGoogleMap->address = $concatAll;
+
         $updateGoogleMap->save();
         return redirect()->back()->with('success', 'Modification effectué avec succès !');
     }

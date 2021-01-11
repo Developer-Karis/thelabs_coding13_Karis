@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="col-6">
-        <div class="card shadow bg-white rounded card-warning">
+        <div class="card mb-4 shadow bg-white rounded card-warning">
             <div class="card-header mb-3">
                 <h3 class="card-title font-weight-bold">Modifier le Titre Principal</h3>
             </div>
@@ -45,6 +45,28 @@
                     <div class="form-group mt-3">
                         <label for="">Titre</label>
                         <input type="text" name="title" class="form-control w-50 m-auto" value="{{$teams[0]->title}}">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn bg-warning font-weight-bold">Update</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card shadow bg-white rounded card-warning">
+            <div class="card-header mb-3">
+                <h3 class="card-title font-weight-bold">Choisir l'emplacement de la Personne au Milieu</h3>
+            </div>
+            <form action="/update-place-team" method="post">
+                @csrf
+                <div class="text-center">
+                    <div class="form-group mt-3">
+                        <label for="">Choisir</label><br>
+                        <select name="team_id" class="form-control m-auto" style="width: max-content;">
+                            @foreach ($teams as $item)
+                            <option value="{{$item->id}}">{{$item->fullName}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="card-footer">

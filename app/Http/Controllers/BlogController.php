@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Navbar;
+use App\Models\Banner;
+use App\Models\BannerHeader;
+use App\Models\Footer;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -16,7 +19,10 @@ class BlogController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('labs.blog', compact('navbars'));
+        $banners = Banner::all();
+        $bannerHeader = BannerHeader::all();
+        $footers = Footer::all();
+        return view('labs.blog', compact('navbars', 'banners', 'bannerHeader', 'footers'));
     }
 
     /**
@@ -83,5 +89,26 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+
+    public function adminShowBannerHeaderBlog(Blog $blog) 
+    {
+        $bannerHeader = BannerHeader::all();
+        return view('admin.blog.banniere', compact('bannerHeader'));
+    }
+
+    public function adminUpdateBannerHeaderBlog(Blog $blog, Request $request, $id) 
+    {
+        $updateBannerHeaderService = BannerHeader::find($id);
+
+        $request->validate([
+            'title' => 'min:5',
+        ]);
+
+        $updateBannerHeaderService->title = $request->title;
+        $updateBannerHeaderService->lienPrecedent = $request->lienPrecedent;
+        $updateBannerHeaderService->lienActuel = $request->lienActuel;
+        $updateBannerHeaderService->save();
+        return redirect()->back()->with('success', 'Modification effectué avec succès !');
     }
 }

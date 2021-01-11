@@ -41,7 +41,7 @@
 	<!-- Header section -->
 	<header class="header-section">
 		<div class="logo">
-			<img src="img/logo.png" alt=""><!-- Logo -->
+			<img src="{{asset('img/small-'.$banners[0]->logo)}}" alt=""><!-- Logo -->
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
@@ -92,10 +92,10 @@
 		<div class="overlay"></div>
 		<div class="container text-right">
 			<div class="page-info">
-				<h2>Blog</h2>
+				<h2>{{$bannerHeader[1]->title}}</h2>
 				<div class="page-links">
-					<a href="#">Home</a>
-					<span>Blog</span>
+					<a href="/">{{$bannerHeader[1]->lienPrecedent}}</a>
+					<span>{{$bannerHeader[1]->lienActuel}}</span>
 				</div>
 			</div>
 		</div>
@@ -227,18 +227,6 @@
 					</div>
 					<!-- Single widget -->
 					<div class="widget-item">
-						<h2 class="widget-title">Instagram</h2>
-						<ul class="instagram">
-							<li><img src="img/instagram/1.jpg" alt=""></li>
-							<li><img src="img/instagram/2.jpg" alt=""></li>
-							<li><img src="img/instagram/3.jpg" alt=""></li>
-							<li><img src="img/instagram/4.jpg" alt=""></li>
-							<li><img src="img/instagram/5.jpg" alt=""></li>
-							<li><img src="img/instagram/6.jpg" alt=""></li>
-						</ul>
-					</div>
-					<!-- Single widget -->
-					<div class="widget-item">
 						<h2 class="widget-title">Tags</h2>
 						<ul class="tag">
 							<li><a href="">branding</a></li>
@@ -249,23 +237,6 @@
 							<li><a href="">web design</a></li>
 							<li><a href="">photography</a></li>
 						</ul>
-					</div>
-					<!-- Single widget -->
-					<div class="widget-item">
-						<h2 class="widget-title">Quote</h2>
-						<div class="quote">
-							<span class="quotation">‘​‌‘​‌</span>
-							<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut
-								hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.
-								Sed lacinia turpis at ultricies vestibulum.</p>
-						</div>
-					</div>
-					<!-- Single widget -->
-					<div class="widget-item">
-						<h2 class="widget-title">Add</h2>
-						<div class="add">
-							<a href=""><img src="img/add.jpg" alt=""></a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -296,7 +267,8 @@
 
 	<!-- Footer section -->
 	<footer class="footer-section">
-		<h2>2017 All rights reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></h2>
+		<h2 style="color: white !important;">{{$footers[0]->para}} <a href="https://colorlib.com"
+				target="_blank">{{$footers[0]->author}}</a></h2>
 	</footer>
 	<!-- Footer section end -->
 

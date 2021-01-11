@@ -338,7 +338,7 @@ return [
             'submenu' => [
                 [
                     'text'    => 'Bannière',
-                    'url'     => '#',
+                    'url'     => '/banniereBlog',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [

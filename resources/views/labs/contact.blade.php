@@ -105,11 +105,10 @@
 
 	<!-- Google map -->
 	<div style="width: 100%">
-		<iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-			src="{{$concatAll}}">
+		<iframe width="100%" height="600" src="{{$contact[0]->address}}" frameborder="0" scrolling="no" marginheight="0"
+			marginwidth="0">
 		</iframe>
 	</div>
-
 
 
 	<!-- Contact section -->

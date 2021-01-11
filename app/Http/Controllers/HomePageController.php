@@ -14,6 +14,7 @@ use App\Models\HomeTeam;
 use App\Models\HomeReady;
 use App\Models\HomeContact;
 use App\Models\Footer;
+use App\Models\TeamStatic;
 use Illuminate\Support\Str;
 use Image;
 use Illuminate\Support\Facades\Storage;
@@ -68,6 +69,10 @@ class HomePageController extends Controller
 
         $footers = Footer::all();
 
+        $teamStatic = TeamStatic::all();
+        $random1 = HomeTeam::all()->except($teamStatic[0]->home_teams->id)->random(1);
+        $random2 = HomeTeam::all()->except([$teamStatic[0]->home_teams->id, $random1[0]->id])->random(1);
+
         return view('labs.home', 
         compact(
         'navbars', 
@@ -92,7 +97,10 @@ class HomePageController extends Controller
         'teams',
         'readys',
         'contacts',
-        'footers')
+        'footers',
+        'teamStatic',
+        'random1',
+        'random2')
         )->with('pagination', $paginationServices);
     }
 
@@ -430,6 +438,16 @@ class HomePageController extends Controller
         $storeTeam->function = $request->changeFunction;
         $storeTeam->save();
         return redirect('/team');
+    }
+
+    public function adminUpdatePlaceTeam(HomePage $homePage, Request $request) 
+    {
+        $updatePlaceTeam = TeamStatic::all();
+        $updatePlaceTeam[0]->delete();
+        $newTeamStatic = new TeamStatic();
+        $newTeamStatic->team_id = $request->team_id;
+        $newTeamStatic->save();
+        return redirect()->back();
     }
 
     public function adminDeleteTeam(HomePage $homePage, $id) 

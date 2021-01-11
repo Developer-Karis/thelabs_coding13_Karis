@@ -139,7 +139,7 @@ class ServiceController extends Controller
     public function adminShowBannerHeaderService(Service $service) 
     {
         $bannerHeader = BannerHeader::all();
-        return view('admin.services.bannerHeader.banniere', compact('bannerHeader'));
+        return view('admin.services.banniere', compact('bannerHeader'));
     }
 
     public function adminUpdateBannerHeaderService(Service $service, Request $request, $id) 

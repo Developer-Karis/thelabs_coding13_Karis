@@ -35,7 +35,7 @@
             <div class="form-group text-center">
                 <label for="">Full Name</label>
                 <input type="text" name="changeFullName" class="form-control m-auto" style="width: 35%;"
-                    value="{{$editTeam->title}}">
+                    value="{{$editTeam->fullName}}">
             </div>
             <div class="form-group text-center">
                 <label for="">Function</label>

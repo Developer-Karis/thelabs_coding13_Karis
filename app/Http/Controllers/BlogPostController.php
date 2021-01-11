@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use App\Models\Navbar;
+use App\Models\Banner;
+use App\Models\BannerHeader;
+use App\Models\Footer;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -16,7 +19,10 @@ class BlogPostController extends Controller
     public function index()
     {
         $navbars = Navbar::all();
-        return view('labs.blog-post', compact('navbars'));
+        $banners = Banner::all();
+        $bannerHeader = BannerHeader::all();
+        $footers = Footer::all();
+        return view('labs.blog-post', compact('navbars', 'banners', 'bannerHeader', 'footers'));
     }
 
     /**

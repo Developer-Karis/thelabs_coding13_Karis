@@ -243,7 +243,23 @@
 			</div>
 			<div class="row">
 				<!-- single member -->
-				@foreach ($teams as $item)
+				@foreach ($random1 as $item)
+				<div class="col-sm-4">
+					<div class="member">
+						<img src="{{asset('img/team/'.$item->imageTeam)}}" alt="">
+						<h2>{{$item->fullName}}</h2>
+						<h3>{{$item->function}}</h3>
+					</div>
+				</div>
+				@endforeach
+				<div class="col-sm-4">
+					<div class="member">
+						<img src="{{asset('img/team/'.$teamStatic[0]->home_teams->imageTeam)}}" alt="">
+						<h2>{{$teamStatic[0]->home_teams->fullName}}</h2>
+						<h3>{{$teamStatic[0]->home_teams->function}}</h3>
+					</div>
+				</div>
+				@foreach ($random2 as $item)
 				<div class="col-sm-4">
 					<div class="member">
 						<img src="{{asset('img/team/'.$item->imageTeam)}}" alt="">

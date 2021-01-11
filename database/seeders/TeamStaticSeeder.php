@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ContactSeeder extends Seeder
+class TeamStaticSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,8 @@ class ContactSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('contacts')->insert([
-            'nom' => 'Anderlecht',
-            'address' => 'https://maps.google.com/maps?q=Anderlecht&t=&z=13&ie=UTF8&iwloc=&output=embed'
+        DB::table('team_statics')->insert([
+            'team_id' => 2,
         ]);
     }
 }
