@@ -7,6 +7,9 @@ use App\Models\Navbar;
 use App\Models\Banner;
 use App\Models\BannerHeader;
 use App\Models\Footer;
+use App\Models\Tag;
+use App\Models\Categorie;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -18,11 +21,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $navbars = Navbar::all();
-        $banners = Banner::all();
-        $bannerHeader = BannerHeader::all();
-        $footers = Footer::all();
-        return view('labs.blog-post', compact('navbars', 'banners', 'bannerHeader', 'footers'));
+        
     }
 
     /**
@@ -52,9 +51,18 @@ class BlogPostController extends Controller
      * @param  \App\Models\BlogPost  $blogPost
      * @return \Illuminate\Http\Response
      */
-    public function show(BlogPost $blogPost)
+    public function show(BlogPost $blogPost, $id)
     {
-        //
+        $blogArticle = Blog::find($id);
+
+        $navbars = Navbar::all();
+        $banners = Banner::all();
+        $bannerHeader = BannerHeader::all();
+        $footers = Footer::all();
+
+        $tags = Tag::all();
+        $categories = Categorie::all();
+        return view('labs.blog-post', compact('navbars', 'banners', 'bannerHeader', 'footers', 'tags', 'categories', 'blogArticle'));
     }
 
     /**

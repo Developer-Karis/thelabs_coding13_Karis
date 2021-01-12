@@ -112,11 +112,7 @@
 					@foreach ($pagination as $item)
 					<div class="post-item">
 						<div class="post-thumbnail">
-							@if ($item->image == 'blog-2.jpg')
 							<img src="{{asset('img/blog/'.$item->image)}}" alt="" height="280" width="600">
-							@else
-							<img src="{{asset('img/'.$item->image)}}" alt="" height="280" width="600">
-							@endif
 							<div class="post-date" style="height: 50px;">
 								<h3>{{$item->date}}</h3>
 							</div>
@@ -124,17 +120,17 @@
 						<div class="post-content">
 							<h2 class="post-title">{{$item->titre}}</h2>
 							<div class="post-meta">
-								@foreach ($item->blog_article_categories as $item2)
-								<a href="">{{$item2->blog_categories->nom}}</a>
+								@foreach ($item->categorie as $item2)
+								<a href="">{{$item2->nom}}</a>
 								@endforeach
 
-								@foreach ($item->blog_article_tags as $item3)
-								<a href="">{{$item3->blog_tags->nom}}</a>
+								@foreach ($item->tag as $item3)
+								<a href="">{{$item3->nom}}</a>
 								@endforeach
 								<a href="">2 Comments</a>
 							</div>
 							<p>{{$item->description}}</p>
-							<a href="/blog-post" class="read-more">Read More</a>
+							<a href="/blog-post/{{$item->id}}" class="read-more">Read More</a>
 						</div>
 					</div>
 					@endforeach

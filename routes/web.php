@@ -138,6 +138,10 @@ Route::get('/edit-tag/{id}', [BlogController::class, 'adminEditTag']);
 Route::post('/update-tag/{id}', [BlogController::class, 'adminUpdateTag']);
 Route::get('/delete-tag/{id}', [BlogController::class, 'adminDeleteTag']);
 
+// Blog Post Page
+Route::get('/blog-post/{id}', [BlogPostController::class, 'show']);
+
+
 
 
 

@@ -10,6 +10,7 @@ use App\Models\BannerHeader;
 use App\Models\HomePresentation;
 use App\Models\HomeContact;
 use App\Models\Footer;
+use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,8 @@ class ServiceController extends Controller
 
         $footers = Footer::all();
 
+        $blogArticles = Blog::orderBy('id', 'DESC')->take(3)->get();
+
         return view('labs.services', 
         compact(
         'navbars', 
@@ -66,7 +69,8 @@ class ServiceController extends Controller
         'servicesPrimes',
         'servicesPrimes2',
         'contacts',
-        'footers'
+        'footers',
+        'blogArticles'
         ))->with('pagination', $paginationServices);
     }
 

@@ -7,9 +7,8 @@ use App\Models\Navbar;
 use App\Models\Banner;
 use App\Models\BannerHeader;
 use App\Models\Footer;
-use App\Models\BlogTag;
-use App\Models\BlogCategories;
-use App\Models\BlogArticle;
+use App\Models\Tag;
+use App\Models\Categorie;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -26,11 +25,11 @@ class BlogController extends Controller
         $banners = Banner::all();
         $bannerHeader = BannerHeader::all();
         $footers = Footer::all();
-        $tags = BlogTag::all();
-        $categories = BlogCategories::all();
-        $blogArticles = BlogArticle::all();
+        $tags = Tag::all();
+        $categories = Categorie::all();
+        $blogArticles = Blog::all();
 
-        $paginationArticles = BlogArticle::orderBy('id', 'DESC')->paginate(1);
+        $paginationArticles = Blog::orderBy('id', 'DESC')->paginate(1);
 
         return view('labs.blog', 
         compact(
@@ -40,7 +39,7 @@ class BlogController extends Controller
         'footers', 
         'tags', 
         'categories', 
-        'blogArticles'
+        'blogArticles',
         ))->with('pagination', $paginationArticles);
     }
 
@@ -133,13 +132,15 @@ class BlogController extends Controller
     
     public function adminShowArticles(Blog $blog) 
     {
-        $articles = BlogArticle::all();
-        return view('admin.blog.articles', compact('articles'));
+        $articles = Blog::all();
+        $tags = Tag::all();
+        $categories = Categorie::all();
+        return view('admin.blog.articles', compact('articles', 'tags', 'categories'));
     }
 
     public function adminCreateArticle(Blog $blog, Request $request) 
     {
-        $storeArticle = new BlogArticle();
+        $storeArticle = new Blog();
         $storeArticle->image = $request->file('newImageArticle')->hashName();
         $storeArticle->date = $request->newDate;
         $storeArticle->titre = $request->newTitre;
@@ -150,23 +151,25 @@ class BlogController extends Controller
         $storeArticle->fonction = $request->newFonction;
         $storeArticle->description = $request->newDescription;
         $storeArticle->save();
-        $request->file('newImageArticle')->storePublicly('img', 'public');
-        $request->file('newPhotoProfil')->storePublicly('img', 'public');
+        $storeArticle->categorie()->syncWithoutDetaching($request->cats);
+        $storeArticle->tag()->syncWithoutDetaching($request->tags);
+        $request->file('newImageArticle')->storePublicly('img/blog/', 'public');
+        $request->file('newPhotoProfil')->storePublicly('img/blog/', 'public');
         return redirect()->back()->with('success', 'Ajout effectué avec succès !');
     }
 
     public function adminShowEditArticle(Blog $blog, $id) 
     {
-        $editArticle = BlogArticle::find($id);
+        $editArticle = Blog::find($id);
         return view('admin.blog.articleEdit', compact('editArticle'));
     }
 
     public function adminUpdateArticle(Blog $blog, Request $request, $id) 
     {
-        $updateArticle = BlogArticle::find($id);
+        $updateArticle = Blog::find($id);
 
         if ($updateArticle->image != 'blog-2.jpg') {
-            Storage::disk('public')->delete('img/' . $updateArticle->image);
+            Storage::disk('public')->delete('img/blog/' . $updateArticle->image);
         }
 
         $updateArticle->image = $request->file('changeImageArticle')->hashName();
@@ -179,27 +182,27 @@ class BlogController extends Controller
         $updateArticle->fonction = $request->changeFonction;
         $updateArticle->description = $request->changeDescription;
         $updateArticle->save();
-        $request->file('changeImageArticle')->storePublicly('img', 'public');
-        $request->file('changePhotoProfil')->storePublicly('img', 'public');
+        $request->file('changeImageArticle')->storePublicly('img/blog/', 'public');
+        $request->file('changePhotoProfil')->storePublicly('img/blog/', 'public');
         return redirect('/articles');
     }
 
     public function adminDeletetArticle(Blog $blog, $id) 
     {
-        $deleteArticle = BlogArticle::find($id);
+        $deleteArticle = Blog::find($id);
         $deleteArticle->delete();
         return redirect()->back();
     }
 
     public function adminShowCategories(Blog $blog) 
     {
-        $categories = BlogCategories::all();
+        $categories = Categorie::all();
         return view('admin.blog.categories', compact('categories'));
     }
 
     public function adminCreateCategorie(Blog $blog, Request $request) 
     {
-        $newCategorie = new BlogCategories();
+        $newCategorie = new Categorie();
         $newCategorie->nom = $request->nom;
         $newCategorie->save();
         return redirect()->back()->with('success', 'Ajout effectuée avec succès !');
@@ -207,13 +210,13 @@ class BlogController extends Controller
 
     public function adminEditCategorie(Blog $blog, $id) 
     {
-        $editCategorie = BlogCategories::find($id);
+        $editCategorie = Categorie::find($id);
         return view('admin.blog.categorieEdit', compact('editCategorie'));
     }
 
     public function adminUpdateCategorie(Blog $blog, Request $request, $id) 
     {
-        $updateCategorie = BlogCategories::find($id);
+        $updateCategorie = Categorie::find($id);
         $updateCategorie->nom = $request->changeNom;
         $updateCategorie->save();
         return redirect()->back()->with('success', 'Modification effectuée avec succès !');
@@ -221,27 +224,27 @@ class BlogController extends Controller
 
     public function adminDeleteCategorie(Blog $blog, Request $request, $id) 
     {
-        $updateCategorie = BlogCategories::find($id);
+        $updateCategorie = Categorie::find($id);
         $updateCategorie->delete();
         return redirect('/categories');
     }
 
     public function adminDeleteArticle(Blog $blog, $id) 
     {
-        $deleteArticle = BlogArticle::find($id);
+        $deleteArticle = Blog::find($id);
         $deleteArticle->delete();
         return redirect()->back();
     }
 
     public function adminShowTags(Blog $blog) 
     {
-        $tags = BlogTag::all();
+        $tags = Tag::all();
         return view('admin.blog.tags', compact('tags'));
     }
 
     public function adminCreateTag(Blog $blog, Request $request) 
     {
-        $newTag = new BlogTag();
+        $newTag = new Tag();
         $newTag->nom = $request->nom;
         $newTag->save();
         return redirect()->back()->with('success', 'Ajout effectuée avec succès !');
@@ -249,13 +252,13 @@ class BlogController extends Controller
 
     public function adminEditTag(Blog $blog, $id) 
     {
-        $editTag = BlogTag::find($id);
+        $editTag = Tag::find($id);
         return view('admin.blog.tagEdit', compact('editTag'));
     }
 
     public function adminUpdateTag(Blog $blog, Request $request, $id) 
     {
-        $updateTag = BlogTag::find($id);
+        $updateTag = Tag::find($id);
         $updateTag->nom = $request->changeTag;
         $updateTag->save();
         return redirect()->back()->with('success', 'Modification effectuée avec succès !');
@@ -263,7 +266,7 @@ class BlogController extends Controller
 
     public function adminDeleteTag(Blog $blog, Request $request, $id) 
     {
-        $updateTag = BlogTag::find($id);
+        $updateTag = Tag::find($id);
         $updateTag->delete();
         return redirect('/tags');
     }

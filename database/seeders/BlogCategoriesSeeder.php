@@ -14,7 +14,7 @@ class BlogCategoriesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('blog_categories')->insert([
+        DB::table('categories')->insert([
             [
                 'nom' => 'HTML'
             ],

@@ -14,7 +14,7 @@ class BlogTagSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('blog_tags')->insert([
+        DB::table('tags')->insert([
             [
                 'nom' => 'branding'
             ],

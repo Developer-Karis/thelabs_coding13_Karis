@@ -34,6 +34,26 @@
                             <input type="date" name="newDate" class="form-control m-auto" style="width: max-content;">
                         </div>
                         <div class="form-group">
+                            <label for="">Choisir une ou plusieurs Catégories</label>
+                            <select multiple="" class="form-control w-50 m-auto" name="cats[]">
+                                @foreach ($categories as $item)
+                                <option value="{{$item->id}}"
+                                    {{ in_array($item->id, old('cats') ?: []) ? 'selected' : '' }}>{{$item->nom}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Choisir un ou plusieurs Tags</label>
+                            <select multiple="" class="form-control w-50 m-auto" name="tags[]">
+                                @foreach ($tags as $item)
+                                <option value="{{$item->id}}"
+                                    {{ in_array($item->id, old('tags') ?: []) ? 'selected' : '' }}>{{$item->nom}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="">Titre</label>
                             <input type="text" name="newTitre" class="form-control m-auto" style="width: 60%;">
                         </div>
@@ -99,11 +119,7 @@
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>
-                                @if ($item->image == 'blog-2.jpg')
                                 <img src="{{asset('img/blog/'.$item->image)}}" height="150" width="250" alt="">
-                                @else
-                                <img src="{{asset('img/'.$item->image)}}" height="150" width="250" alt="">
-                                @endif
                             </td>
                             <td>{{$item->date}}</td>
                             <td>{{$item->titre}}</td>

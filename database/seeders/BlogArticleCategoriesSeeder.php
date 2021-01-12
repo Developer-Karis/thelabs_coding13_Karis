@@ -14,18 +14,34 @@ class BlogArticleCategoriesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('blog_article_categories')->insert([
+        DB::table('blog_categorie')->insert([
             [
-                'article_id' => 1,
+                'blog_id' => 1,
                 'categorie_id' => 1
             ],
             [
-                'article_id' => 1,
+                'blog_id' => 1,
                 'categorie_id' => 2
             ],
             [
-                'article_id' => 1,
+                'blog_id' => 1,
                 'categorie_id' => 3
+            ],
+            [
+                'blog_id' => 2,
+                'categorie_id' => 2,
+            ],
+            [
+                'blog_id' => 2,
+                'categorie_id' => 3,
+            ],
+            [
+                'blog_id' => 3,
+                'categorie_id' => 1,
+            ],
+            [
+                'blog_id' => 3,
+                'categorie_id' => 2,
             ],
         ]);
     }
