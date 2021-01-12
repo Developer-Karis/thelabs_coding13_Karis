@@ -119,7 +119,7 @@
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>
-                                <img src="{{asset('img/blog/'.$item->image)}}" height="150" width="250" alt="">
+                                <img src="{{asset('img/blog/'.$item->image)}}" height="150" width="280" alt="">
                             </td>
                             <td>{{$item->date}}</td>
                             <td>{{$item->titre}}</td>

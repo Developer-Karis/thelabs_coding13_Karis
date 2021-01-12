@@ -320,16 +320,6 @@ return [
                     'url'     => '/bannerHeader',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
-                [
-                    'text'    => 'Blog Rapides',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
-                [
-                    'text'    => 'Newsletter',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
-                ],
             ],
         ],
         [
