@@ -9,6 +9,7 @@ use App\Models\BannerHeader;
 use App\Models\Footer;
 use App\Models\Tag;
 use App\Models\Categorie;
+use App\Models\Commentary;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,8 @@ class BlogController extends Controller
 
         $paginationArticles = Blog::orderBy('id', 'DESC')->paginate(1);
 
+        $commentaires = Commentary::all();
+
         return view('labs.blog', 
         compact(
         'navbars', 
@@ -40,6 +43,7 @@ class BlogController extends Controller
         'tags', 
         'categories', 
         'blogArticles',
+        'commentaires'
         ))->with('pagination', $paginationArticles);
     }
 
@@ -154,7 +158,7 @@ class BlogController extends Controller
         $storeArticle->categorie()->syncWithoutDetaching($request->cats);
         $storeArticle->tag()->syncWithoutDetaching($request->tags);
         $request->file('newImageArticle')->storePublicly('img/blog/', 'public');
-        $request->file('newPhotoProfil')->storePublicly('img/blog/', 'public');
+        $request->file('newPhotoProfil')->storePublicly('img/team/', 'public');
         return redirect()->back()->with('success', 'Ajout effectué avec succès !');
     }
 
@@ -173,7 +177,9 @@ class BlogController extends Controller
         }
 
         $updateArticle->image = $request->file('changeImageArticle')->hashName();
-        $updateArticle->date = $request->changeDate;
+        $dateToday = new DateTime();
+        $date = $dateToday->format('Y-m-d') . ' | Reply';
+        $updateArticle->date = $date;
         $updateArticle->titre = $request->changeTitre;
         $updateArticle->auteur = $request->changeAuteur;
         $updateArticle->texte = $request->changeTexte;

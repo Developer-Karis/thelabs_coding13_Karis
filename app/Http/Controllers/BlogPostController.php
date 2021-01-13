@@ -10,6 +10,9 @@ use App\Models\Footer;
 use App\Models\Tag;
 use App\Models\Categorie;
 use App\Models\Blog;
+use App\Models\Commentary;
+use Auth;
+use DateTime;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -42,7 +45,16 @@ class BlogPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $commentary = new Commentary();
+        $commentary->photo_profil = '01.jpg';
+        $commentary->fullname = Auth::user()->name;
+        $dateToday = new DateTime();
+        $date = $dateToday->format('Y-m-d') . ' | Reply';
+        $commentary->title = $date;
+        $commentary->message = $request->message;
+        $commentary->article_id = $request->article_id;
+        $commentary->save();
+        return redirect()->back();
     }
 
     /**
@@ -62,7 +74,12 @@ class BlogPostController extends Controller
 
         $tags = Tag::all();
         $categories = Categorie::all();
-        return view('labs.blog-post', compact('navbars', 'banners', 'bannerHeader', 'footers', 'tags', 'categories', 'blogArticle'));
+
+        $commentaries = Commentary::all();
+
+        $countCommentaries = Commentary::where('article_id', $blogArticle->id)->count();
+        
+        return view('labs.blog-post', compact('navbars', 'banners', 'bannerHeader', 'footers', 'tags', 'categories', 'blogArticle', 'commentaries', 'countCommentaries'));
     }
 
     /**

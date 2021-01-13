@@ -124,10 +124,17 @@
 								<a href="">{{$item2->nom}}</a>
 								@endforeach
 
+								<div style="display: none !important;">{{$a=0}}</div>
+								@foreach ($commentaires as $elem)
+								@if ($elem->article_id == $item->id)
+								<div style="display: none !important;">{{$a++}}</div>
+								@endif
+								@endforeach
+
 								@foreach ($item->tag as $item3)
 								<a href="">{{$item3->nom}}</a>
 								@endforeach
-								<a href="">2 Comments</a>
+								<a href="">Comments ({{$a}})</a>
 							</div>
 							<p>{{$item->description}}</p>
 							<a href="/blog-post/{{$item->id}}" class="read-more">Read More</a>

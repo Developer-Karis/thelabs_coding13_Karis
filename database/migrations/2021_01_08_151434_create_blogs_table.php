@@ -24,6 +24,7 @@ class CreateBlogsTable extends Migration
             $table->text('texte_auteur');
             $table->text('fonction');
             $table->text('description');
+            $table->boolean('confirmer')->default(false);
             $table->timestamps();
         });
     }

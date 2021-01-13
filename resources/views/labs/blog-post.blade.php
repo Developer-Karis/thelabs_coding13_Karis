@@ -28,13 +28,13 @@
 </head>
 
 <body>
-	<!-- Page Preloder -->
+	{{-- <!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader">
 			<img src="{{asset('img/logo.png')}}" alt="">
-			<h2>Loading.....</h2>
-		</div>
+	<h2>Loading.....</h2>
 	</div>
+	</div> --}}
 
 
 	<!-- Header section -->
@@ -125,14 +125,14 @@
 								@foreach ($blogArticle->tag as $item3)
 								<a href="">{{$item3->nom}}</a>
 								@endforeach
-								<a href="">2 Comments</a>
+								<a href="">{{$countCommentaries}} Comments</a>
 							</div>
 							<p>{{$blogArticle->texte}}</p>
 						</div>
 						<!-- Post Author -->
 						<div class="author">
 							<div class="avatar">
-								<img src="{{asset('img/'.$blogArticle->photo_profil)}}" alt="">
+								<img src="{{asset('img/team/'.$blogArticle->photo_profil)}}" alt="">
 							</div>
 							<div class="author-info">
 								<h2>{{$blogArticle->auteur}}, <span>{{$blogArticle->fonction}}</span></h2>
@@ -141,53 +141,46 @@
 						</div>
 						<!-- Post Comments -->
 						<div class="comments">
-							<h2>Comments (2)</h2>
+							<h2>Comments ({{$countCommentaries}})</h2>
+							@foreach ($commentaries as $elem)
+							@if ($elem->article_id == $blogArticle->id)
 							<ul class="comment-list">
 								<li>
 									<div class="avatar">
-										<img src="{{asset('img/avatar/01.jpg')}}" alt="">
+										<img src="{{asset('img/avatar/'.$elem->photo_profil)}}" alt="">
 									</div>
 									<div class="commetn-text">
-										<h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-										<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero.
-											Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis
-											ante eget tristique. </p>
-									</div>
-								</li>
-								<li>
-									<div class="avatar">
-										<img src="{{asset('img/avatar/02.jpg')}}" alt="">
-									</div>
-									<div class="commetn-text">
-										<h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-										<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero.
-											Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis
-											ante eget tristique. </p>
+										<h3>{{$elem->fullname . ' |'}} {{$elem->title}}</h3>
+										<p>{{$elem->message}}</p>
 									</div>
 								</li>
 							</ul>
+							@endif
+							@endforeach
 						</div>
 						<!-- Commert Form -->
+						@if (Route::has('login'))
+						<a class="btn btn-primary btn-lg" href="{{ route('login') }}">{{ __('Login') }}</a>
+						@endif
+						@auth
 						<div class="row">
 							<div class="col-md-9 comment-from">
 								<h2>Leave a comment</h2>
-								<form class="form-class">
+								<form action="/store-commentary" method="post" class="form-class">
+									@csrf
 									<div class="row">
-										<div class="col-sm-6">
-											<input type="text" name="name" placeholder="Your name">
-										</div>
-										<div class="col-sm-6">
-											<input type="text" name="email" placeholder="Your email">
-										</div>
 										<div class="col-sm-12">
-											<input type="text" name="subject" placeholder="Subject">
-											<textarea name="message" placeholder="Message"></textarea>
-											<button class="site-btn">send</button>
+											<input type="text" name="article_id" style="display: none !important;"
+												value="{{$blogArticle->id}}">
+											<textarea name="message" placeholder="Message"
+												style="resize: none;"></textarea>
+											<button type="submit" class="site-btn">send</button>
 										</div>
 									</div>
 								</form>
 							</div>
 						</div>
+						@endauth
 					</div>
 				</div>
 				<!-- Sidebar area -->

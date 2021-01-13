@@ -35,7 +35,7 @@ class BlogArticleSeeder extends Seeder
                 Nulla congue consectetur placerat. Integer sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque condimentum convallis. 
                 Sed ac mollis sem.',
 
-                'photo_profil' => 'team/1.jpg',
+                'photo_profil' => '1.jpg',
 
                 'texte_auteur' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. 
                 Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
@@ -66,7 +66,7 @@ class BlogArticleSeeder extends Seeder
                 Nulla congue consectetur placerat. Integer sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque condimentum convallis. 
                 Sed ac mollis sem.',
 
-                'photo_profil' => 'team/1.jpg',
+                'photo_profil' => '1.jpg',
 
                 'texte_auteur' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. 
                 Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
@@ -97,7 +97,7 @@ class BlogArticleSeeder extends Seeder
                 Nulla congue consectetur placerat. Integer sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque condimentum convallis. 
                 Sed ac mollis sem.',
 
-                'photo_profil' => 'team/1.jpg',
+                'photo_profil' => '1.jpg',
 
                 'texte_auteur' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. 
                 Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',

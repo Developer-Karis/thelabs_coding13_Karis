@@ -140,6 +140,7 @@ Route::get('/delete-tag/{id}', [BlogController::class, 'adminDeleteTag']);
 
 // Blog Post Page
 Route::get('/blog-post/{id}', [BlogPostController::class, 'show']);
+Route::post('/store-commentary', [BlogPostController::class, 'store']);
 
 
 
