@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     @if (session('success'))
-    <div class="alert alert-success w-50 m-auto">
+    <div class="alert alert-success">
         {{ session('success') }}
     </div>
     <script>
@@ -16,7 +16,7 @@
         }, 1000);
     </script>
     @endif
-    <div class="col-12">
+    <div class="mt-3 col-12">
         <div class="card shadow bg-white rounded card-warning">
             <div class="card-header mb-3">
                 <h3 class="card-title font-weight-bold">Ajouter un Article</h3>
@@ -116,6 +116,7 @@
                     </thead>
                     <tbody>
                         @foreach ($articles as $item)
+                        @if ($item->confirmer == true)
                         <tr>
                             <th scope="row">{{$item->id}}</th>
                             <td>
@@ -129,6 +130,7 @@
                                 <a href="/delete-article/{{$item->id}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

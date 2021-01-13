@@ -10,6 +10,9 @@ use App\Models\Footer;
 use App\Models\Tag;
 use App\Models\Categorie;
 use App\Models\Commentary;
+use App\Models\Newsletter;
+use App\Mail\NewsletterSender;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -28,9 +31,7 @@ class BlogController extends Controller
         $footers = Footer::all();
         $tags = Tag::all();
         $categories = Categorie::all();
-        $blogArticles = Blog::all();
-
-        $paginationArticles = Blog::orderBy('id', 'DESC')->paginate(1);
+        $blogArticles = Blog::orderBy('id', 'DESC')->get();
 
         $commentaires = Commentary::all();
 
@@ -44,7 +45,7 @@ class BlogController extends Controller
         'categories', 
         'blogArticles',
         'commentaires'
-        ))->with('pagination', $paginationArticles);
+        ));
     }
 
     /**
@@ -140,6 +141,12 @@ class BlogController extends Controller
         $tags = Tag::all();
         $categories = Categorie::all();
         return view('admin.blog.articles', compact('articles', 'tags', 'categories'));
+    }
+
+    public function adminShowArticlesAttente(Blog $blog) 
+    {
+        $articles = Blog::all();
+        return view('admin.blog.articlesAttente', compact('articles'));
     }
 
     public function adminCreateArticle(Blog $blog, Request $request) 
@@ -275,5 +282,19 @@ class BlogController extends Controller
         $updateTag = Tag::find($id);
         $updateTag->delete();
         return redirect('/tags');
+    }
+
+    public function accepterArticle(Blog $blog, $id) 
+    {
+        $accepter = Blog::find($id);
+        $mails = Newsletter::all();
+
+        $accepter->confirmer = true;
+        
+        foreach ($mails as $item) {
+            Mail::to($item->email)->send(new NewsletterSender());
+        }
+        $accepter->save();
+        return redirect()->back();
     }
 }

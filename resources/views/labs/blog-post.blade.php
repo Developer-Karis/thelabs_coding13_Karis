@@ -159,9 +159,12 @@
 							@endforeach
 						</div>
 						<!-- Commert Form -->
+						@if (Auth::check() == false)
 						@if (Route::has('login'))
 						<a class="btn btn-primary btn-lg" href="{{ route('login') }}">{{ __('Login') }}</a>
 						@endif
+						@endif
+
 						@auth
 						<div class="row">
 							<div class="col-md-9 comment-from">
@@ -219,9 +222,10 @@
 				</div>
 				<div class="col-md-9">
 					<!-- newsletter form -->
-					<form class="nl-form">
-						<input type="text" placeholder="Your e-mail here">
-						<button class="site-btn btn-2">Newsletter</button>
+					<form action="/store-newsletter" method="POST" class="nl-form">
+						@csrf
+						<input type="text" placeholder="Your e-mail here" name="email">
+						<button type="submit" class="site-btn btn-2">Newsletter</button>
 					</form>
 				</div>
 			</div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +122,8 @@ Route::post('/update-googleMap/{id}', [ContactController::class, 'adminUpdateGoo
 Route::get('/banniereBlog', [BlogController::class, 'adminShowBannerHeaderBlog']);
 Route::post('/update-bannerHeader-blog/{id}', [BlogController::class, 'adminUpdateBannerHeaderBlog']);
 Route::get('/articles', [BlogController::class, 'adminShowArticles']);
+Route::get('/attente', [BlogController::class, 'adminShowArticlesAttente']);
+Route::get('/accepter-article/{id}', [BlogController::class, 'accepterArticle']);
 Route::post('/store-article', [BlogController::class, 'adminCreateArticle']);
 Route::get('/edit-article/{id}', [BlogController::class, 'adminShowEditArticle']);
 Route::post('/update-article/{id}', [BlogController::class, 'adminUpdateArticle']);
@@ -141,6 +144,11 @@ Route::get('/delete-tag/{id}', [BlogController::class, 'adminDeleteTag']);
 // Blog Post Page
 Route::get('/blog-post/{id}', [BlogPostController::class, 'show']);
 Route::post('/store-commentary', [BlogPostController::class, 'store']);
+
+// Newsletter
+Route::get('/newsletter', [NewsletterController::class, 'index']);
+Route::post('/store-newsletter', [NewsletterController::class, 'store']);
+
 
 
 

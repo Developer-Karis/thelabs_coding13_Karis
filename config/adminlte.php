@@ -337,6 +337,11 @@ return [
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
                 [
+                    'text'    => 'Articles en attente',
+                    'url'     => '/attente',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
                     'text'    => 'Catégories',
                     'url'     => '/categories',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
@@ -344,6 +349,11 @@ return [
                 [
                     'text'    => 'Tags',
                     'url'     => '/tags',
+                    'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                ],
+                [
+                    'text'    => 'Newsletter',
+                    'url'     => '/newsletter',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
                 ],
             ],

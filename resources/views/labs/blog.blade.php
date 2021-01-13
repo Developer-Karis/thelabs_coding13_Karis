@@ -109,7 +109,8 @@
 			<div class="row">
 				<div class="col-md-8 col-sm-7 blog-posts">
 					<!-- Post item -->
-					@foreach ($pagination as $item)
+					@foreach ($blogArticles as $item)
+					@if ($item->confirmer == true)
 					<div class="post-item">
 						<div class="post-thumbnail">
 							<img src="{{asset('img/blog/'.$item->image)}}" alt="" height="280" width="600">
@@ -140,8 +141,8 @@
 							<a href="/blog-post/{{$item->id}}" class="read-more">Read More</a>
 						</div>
 					</div>
+					@endif
 					@endforeach
-					{{ $pagination->fragment('article')->links('vendor.pagination.bootstrap-4') }}
 				</div>
 				<!-- Sidebar area -->
 				<div class="col-md-4 col-sm-5 sidebar">
@@ -179,9 +180,10 @@
 				</div>
 				<div class="col-md-9">
 					<!-- newsletter form -->
-					<form class="nl-form">
-						<input type="text" placeholder="Your e-mail here">
-						<button class="site-btn btn-2">Newsletter</button>
+					<form action="/store-newsletter" method="POST" class="nl-form">
+						@csrf
+						<input type="text" placeholder="Your e-mail here" name="email">
+						<button type="submit" class="site-btn btn-2">Newsletter</button>
 					</form>
 				</div>
 			</div>
