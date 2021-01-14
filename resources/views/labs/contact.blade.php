@@ -68,7 +68,7 @@
 				@endif
 				@else
 				<li class="nav-item dropdown">
-					@if (Auth::user()->role_id == 1)
+					@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
 					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
 					@endif
 					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

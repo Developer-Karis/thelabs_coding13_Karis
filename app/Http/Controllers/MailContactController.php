@@ -7,7 +7,7 @@ use App\Mail\MailSender;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
-class MailController extends Controller
+class MailContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,17 +37,23 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
+        $storeMail = new MailContact();
+        $storeMail->name = $request->name;
+        $storeMail->email = $request->email;
+        $storeMail->subject = $request->subject;
+        $storeMail->message = $request->message;
+        $storeMail->save();
         Mail::to('papadopouloskaris@gmail.com')->send(new MailSender($request));
-        return redirect()->back()->with('success', 'Mail envoyé avec succès !');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\MailContact  $mailContact
      * @return \Illuminate\Http\Response
      */
-    public function show(Mail $mail)
+    public function show(MailContact $mailContact)
     {
         //
     }
@@ -55,10 +61,10 @@ class MailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\MailContact  $mailContact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mail $mail)
+    public function edit(MailContact $mailContact)
     {
         //
     }
@@ -67,10 +73,10 @@ class MailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\MailContact  $mailContact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mail $mail)
+    public function update(Request $request, MailContact $mailContact)
     {
         //
     }
@@ -78,10 +84,10 @@ class MailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\MailContact  $mailContact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mail $mail)
+    public function destroy(MailContact $mailContact)
     {
         //
     }

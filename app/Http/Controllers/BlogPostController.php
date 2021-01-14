@@ -79,7 +79,18 @@ class BlogPostController extends Controller
 
         $countCommentaries = Commentary::where('article_id', $blogArticle->id)->count();
         
-        return view('labs.blog-post', compact('navbars', 'banners', 'bannerHeader', 'footers', 'tags', 'categories', 'blogArticle', 'commentaries', 'countCommentaries'));
+        return view('labs.blog-post', 
+        compact(
+        'navbars', 
+        'banners', 
+        'bannerHeader', 
+        'footers', 
+        'tags', 
+        'categories', 
+        'blogArticle', 
+        'commentaries', 
+        'countCommentaries'
+        ));
     }
 
     /**

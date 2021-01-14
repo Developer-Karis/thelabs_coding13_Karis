@@ -190,7 +190,7 @@ class HomePageController extends Controller
     {
         $updateLogoSlogan = Banner::find($id);
 
-        if ($updateLogoSlogan->logo != 'logo.png') {
+        if ($updateLogoSlogan->logo != 'logo.png' || $updateLogoSlogan->logo != 'small-logo.png') {
             Storage::disk('public')->delete('img/' . $updateLogoSlogan->logo);
             Storage::disk('public')->delete('img/small-' . $updateLogoSlogan->logo);
         }

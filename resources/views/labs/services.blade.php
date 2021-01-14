@@ -74,7 +74,7 @@
 				@endif
 				@else
 				<li class="nav-item dropdown">
-					@if (Auth::user()->role_id == 1)
+					@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
 					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
 					@endif
 					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -224,10 +224,19 @@
 				</div>
 				<div class="col-md-9">
 					<!-- newsletter form -->
+					@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+					@endif
 					<form action="/store-newsletter" method="POST" class="nl-form">
 						@csrf
 						<input type="text" placeholder="Your e-mail here" name="email">
-						<button type="submit" class="site-btn btn-2">Newsletter</button>
+						<buatton type="submit" class="site-btn btn-2">Newsletter</button>
 					</form>
 				</div>
 			</div>

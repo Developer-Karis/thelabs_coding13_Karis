@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert w-100 alert-success">
         {{ session('success') }}
     </div>
     <script>
@@ -28,10 +28,6 @@
                         <div class="form-group">
                             <label for="">Ajouter une Image</label><br>
                             <input type="file" name="newImageArticle">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Date</label>
-                            <input type="date" name="newDate" class="form-control m-auto" style="width: max-content;">
                         </div>
                         <div class="form-group">
                             <label for="">Choisir une ou plusieurs Catégories</label>

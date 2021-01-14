@@ -14,6 +14,7 @@ use App\Models\Newsletter;
 use App\Mail\NewsletterSender;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -29,7 +30,15 @@ class BlogController extends Controller
         $banners = Banner::all();
         $bannerHeader = BannerHeader::all();
         $footers = Footer::all();
+
+        $numbers = range(1, 6);
+        shuffle($numbers);
+
+        $numbers2 = range(1, 9);
+        shuffle($numbers2);
+
         $tags = Tag::all();
+
         $categories = Categorie::all();
         $blogArticles = Blog::orderBy('id', 'DESC')->get();
 
@@ -44,7 +53,9 @@ class BlogController extends Controller
         'tags', 
         'categories', 
         'blogArticles',
-        'commentaires'
+        'commentaires',
+        'numbers',
+        'numbers2'
         ));
     }
 
@@ -153,7 +164,11 @@ class BlogController extends Controller
     {
         $storeArticle = new Blog();
         $storeArticle->image = $request->file('newImageArticle')->hashName();
-        $storeArticle->date = $request->newDate;
+        $date = new DateTime();
+        $dateDay = $date->format('d');
+        $dateMonthYear = $date->format('M Y');
+        $storeArticle->date_jour = $dateDay;
+        $storeArticle->date_mois_annee = $dateMonthYear;
         $storeArticle->titre = $request->newTitre;
         $storeArticle->auteur = $request->newAuteur;
         $storeArticle->texte = $request->newTexte;
@@ -172,21 +187,25 @@ class BlogController extends Controller
     public function adminShowEditArticle(Blog $blog, $id) 
     {
         $editArticle = Blog::find($id);
-        return view('admin.blog.articleEdit', compact('editArticle'));
+        $categories = Categorie::all();
+        $tags = Tag::all();
+        return view('admin.blog.articleEdit', compact('editArticle', 'categories', 'tags'));
     }
 
     public function adminUpdateArticle(Blog $blog, Request $request, $id) 
     {
         $updateArticle = Blog::find($id);
 
-        if ($updateArticle->image != 'blog-2.jpg') {
+        if ($updateArticle->image != 'blog-1.jpg' || $updateArticle->image != 'blog-2.jpg' || $updateArticle->image != 'blog-3.jpg') {
             Storage::disk('public')->delete('img/blog/' . $updateArticle->image);
         }
 
         $updateArticle->image = $request->file('changeImageArticle')->hashName();
-        $dateToday = new DateTime();
-        $date = $dateToday->format('Y-m-d') . ' | Reply';
-        $updateArticle->date = $date;
+        $date = new DateTime();
+        $dateDay = $date->format('d');
+        $dateMonthYear = $date->format('M Y');
+        $storeArticle->date_jour = $dateDay;
+        $storeArticle->date_mois_annee = $dateMonthYear;
         $updateArticle->titre = $request->changeTitre;
         $updateArticle->auteur = $request->changeAuteur;
         $updateArticle->texte = $request->changeTexte;
@@ -195,8 +214,24 @@ class BlogController extends Controller
         $updateArticle->fonction = $request->changeFonction;
         $updateArticle->description = $request->changeDescription;
         $updateArticle->save();
+
+        $tab = [];
+        foreach ($updateArticle->categorie as $item) {
+            array_push($tab, $item->id);
+        }
+
+        $tab2 = [];
+        foreach ($updateArticle->tag as $item) {
+            array_push($tab2, $item->id);
+        }
+
+        $updateArticle->categorie()->detach($tab);
+        $updateArticle->tag()->detach($tab2);
+        $updateArticle->categorie()->syncWithoutDetaching($request->cats);
+        $updateArticle->tag()->syncWithoutDetaching($request->tags);
+
         $request->file('changeImageArticle')->storePublicly('img/blog/', 'public');
-        $request->file('changePhotoProfil')->storePublicly('img/blog/', 'public');
+        $request->file('changePhotoProfil')->storePublicly('img/team/', 'public');
         return redirect('/articles');
     }
 

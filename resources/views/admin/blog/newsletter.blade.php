@@ -26,7 +26,7 @@
             <div class="card-body">
                 <div class="form-group">
                     @foreach ($userInfos->unique('email') as $item)
-                    <h5>{{$item->name}} - {{$item->email}}</h5>
+                    <h5>{{$item->email}}</h5>
                     @endforeach
                 </div>
             </div>

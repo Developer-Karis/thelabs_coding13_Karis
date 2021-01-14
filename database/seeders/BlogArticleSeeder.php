@@ -17,7 +17,8 @@ class BlogArticleSeeder extends Seeder
         DB::table('blogs')->insert([
             [
                 'image' => 'blog-1.jpg',
-                'date' => '2021-01-11',
+                'date_jour' => '12',
+                'date_mois_annee' => 'Jan 2021',
                 'titre' => 'How to do a forEach in React ?',
                 'auteur' => 'Lore Williams',
 
@@ -50,7 +51,8 @@ class BlogArticleSeeder extends Seeder
             ],
             [
                 'image' => 'blog-2.jpg',
-                'date' => '2021-01-11',
+                'date_jour' => '10',
+                'date_mois_annee' => 'Jan 2021',
                 'titre' => 'How to do a forEach in Laravel ?',
                 'auteur' => 'Lore Williams',
 
@@ -83,7 +85,8 @@ class BlogArticleSeeder extends Seeder
             ],
             [
                 'image' => 'blog-3.jpg',
-                'date' => '2021-01-11',
+                'date_jour' => '22',
+                'date_mois_annee' => 'Dec 2020',
                 'titre' => 'How to do a forEach in Javascript ?',
                 'auteur' => 'Lore Williams',
 

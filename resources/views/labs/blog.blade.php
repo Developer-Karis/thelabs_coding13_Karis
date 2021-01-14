@@ -68,7 +68,7 @@
 				@endif
 				@else
 				<li class="nav-item dropdown">
-					@if (Auth::user()->role_id == 1)
+					@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
 					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
 					@endif
 					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -114,16 +114,25 @@
 					<div class="post-item">
 						<div class="post-thumbnail">
 							<img src="{{asset('img/blog/'.$item->image)}}" alt="" height="280" width="600">
-							<div class="post-date" style="height: 50px;">
-								<h3>{{$item->date}}</h3>
+							<div class="post-date">
+								<h2>{{$item->date_jour}}</h2>
+								<h3>{{$item->date_mois_annee}}</h3>
 							</div>
 						</div>
 						<div class="post-content">
 							<h2 class="post-title">{{$item->titre}}</h2>
 							<div class="post-meta">
-								@foreach ($item->categorie as $item2)
-								<a href="">{{$item2->nom}}</a>
-								@endforeach
+								<a>{{$item->auteur}}</a>
+
+								<a>
+									@foreach ($item->tag as $item3)
+									@if ($item3 == $item->tag->last())
+									{{$item3->nom}}
+									@else
+									{{$item3->nom}},
+									@endif
+									@endforeach
+								</a>
 
 								<div style="display: none !important;">{{$a=0}}</div>
 								@foreach ($commentaires as $elem)
@@ -131,11 +140,7 @@
 								<div style="display: none !important;">{{$a++}}</div>
 								@endif
 								@endforeach
-
-								@foreach ($item->tag as $item3)
-								<a href="">{{$item3->nom}}</a>
-								@endforeach
-								<a href="">Comments ({{$a}})</a>
+								<a>Comments ({{$a}})</a>
 							</div>
 							<p>{{$item->description}}</p>
 							<a href="/blog-post/{{$item->id}}" class="read-more">Read More</a>
@@ -150,8 +155,8 @@
 					<div class="widget-item">
 						<h2 class="widget-title">Categories</h2>
 						<ul>
-							@foreach ($categories as $item)
-							<li><a href="#">{{$item->nom}}</a></li>
+							@foreach ($numbers as $item)
+							<li><a>{{$categories->find($item)->nom}}</a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -159,8 +164,8 @@
 					<div class="widget-item">
 						<h2 class="widget-title">Tags</h2>
 						<ul class="tag">
-							@foreach ($tags as $item)
-							<li><a href="">{{$item->nom}}</a></li>
+							@foreach ($numbers2 as $item)
+							<li><a>{{$tags->find($item)->nom}}</a></li>
 							@endforeach
 						</ul>
 					</div>

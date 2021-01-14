@@ -36,6 +36,12 @@ class BlogTagSeeder extends Seeder
             [
                 'nom' => 'photography'
             ],
+            [
+                'nom' => 'cars'
+            ],
+            [
+                'nom' => 'books'
+            ],
         ]);
     }
 }

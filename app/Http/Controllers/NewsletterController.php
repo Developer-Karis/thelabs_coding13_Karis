@@ -38,7 +38,10 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        $newsletters = Newsletter::all();
+        $validated = $request->validate([
+            'email' => 'email|unique:newsletters',
+        ]);
+
         $storeNewsletter = new Newsletter();
         $storeNewsletter->email = $request->email;
         $storeNewsletter->save();

@@ -67,7 +67,7 @@
 				@endif
 				@else
 				<li class="nav-item dropdown">
-					@if (Auth::user()->role_id == 1)
+					@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
 					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
 					@endif
 					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -111,21 +111,28 @@
 					<div class="single-post">
 						<div class="post-thumbnail">
 							<img src="{{asset('img/blog/'.$blogArticle->image)}}" alt="">
-							<div class="post-date" style="height: 50px;">
-								<h3>{{$blogArticle->date}}</h3>
+							<div class="post-date">
+								<h2>{{$blogArticle->date_jour}}</h2>
+								<h3>{{$blogArticle->date_mois_annee}}</h3>
 							</div>
 						</div>
 						<div class="post-content">
 							<h2 class="post-title">{{$blogArticle->titre}}</h2>
 							<div class="post-meta">
-								@foreach ($blogArticle->categorie as $item2)
-								<a href="">{{$item2->nom}}</a>
+								@foreach ($blogArticle->categorie as $cat)
+								<a>{{$cat->nom}}</a>
 								@endforeach
 
-								@foreach ($blogArticle->tag as $item3)
-								<a href="">{{$item3->nom}}</a>
-								@endforeach
-								<a href="">{{$countCommentaries}} Comments</a>
+								<a>
+									@foreach ($blogArticle->tag as $elem)
+									@if ($elem == $blogArticle->tag->last())
+									{{$elem->nom}}
+									@else
+									{{$elem->nom}},
+									@endif
+									@endforeach
+								</a>
+								<a>{{$countCommentaries}} Comments</a>
 							</div>
 							<p>{{$blogArticle->texte}}</p>
 						</div>
@@ -193,7 +200,7 @@
 						<h2 class="widget-title">Categories</h2>
 						<ul>
 							@foreach ($categories as $item)
-							<li><a href="#">{{$item->nom}}</a></li>
+							<li><a>{{$item->nom}}</a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -202,7 +209,7 @@
 						<h2 class="widget-title">Tags</h2>
 						<ul class="tag">
 							@foreach ($tags as $item)
-							<li><a href="">{{$item->nom}}</a></li>
+							<li><a>{{$item->nom}}</a></li>
 							@endforeach
 						</ul>
 					</div>

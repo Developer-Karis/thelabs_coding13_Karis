@@ -30,9 +30,24 @@
                             <input type="file" name="changeImageArticle">
                         </div>
                         <div class="form-group">
-                            <label for="">Date</label>
-                            <input type="date" name="changeDate" class="form-control m-auto" style="width: max-content;"
-                                value="{{$editArticle->date}}">
+                            <label for="">Choisir une ou plusieurs Catégories</label>
+                            <select multiple="" class="form-control w-50 m-auto" name="cats[]">
+                                @foreach ($categories as $item)
+                                <option value="{{$item->id}}"
+                                    {{ in_array($item->id, old('cats') ?: []) ? 'selected' : '' }}>{{$item->nom}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Choisir un ou plusieurs Tags</label>
+                            <select multiple="" class="form-control w-50 m-auto" name="tags[]">
+                                @foreach ($tags as $item)
+                                <option value="{{$item->id}}"
+                                    {{ in_array($item->id, old('tags') ?: []) ? 'selected' : '' }}>{{$item->nom}}
+                                </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Titre</label>

@@ -7,7 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NavbarController;
-use App\Http\Controllers\MailController;
+use App\Http\Controllers\MailContactController;
 use App\Http\Controllers\NewsletterController;
 
 /*
@@ -51,13 +51,13 @@ Route::get('/menu', [NavbarController::class, 'index']);
 Route::post('/update-links/{id}', [NavbarController::class, 'updateLinks']);
 
 // Home Banniere
-Route::get('/banniere', [HomePageController::class, 'adminShowBanniere']);
-Route::post('/create-image-carous', [HomePageController::class, 'adminAddImageCarous']);
-Route::get('/edit-logo-slogan/{id}', [HomePageController::class, 'adminEditLogoSlogan']);
-Route::post('/update-logo-slogan/{id}', [HomePageController::class, 'adminUpdateLogoSlogan']);
-Route::get('/edit-carous/{id}', [HomePageController::class, 'adminEditCarous']);
-Route::post('/update-image-carous/{id}', [HomePageController::class, 'adminUpdateImageCarous']);
-Route::get('/delete-carous/{id}', [HomePageController::class, 'adminDeleteImageCarous']);
+Route::get('/banniere', [HomePageController::class, 'adminShowBanniere'])->middleware('webmasterAdmin');
+Route::post('/create-image-carous', [HomePageController::class, 'adminAddImageCarous'])->middleware('webmasterAdmin');
+Route::get('/edit-logo-slogan/{id}', [HomePageController::class, 'adminEditLogoSlogan'])->middleware('webmasterAdmin');
+Route::post('/update-logo-slogan/{id}', [HomePageController::class, 'adminUpdateLogoSlogan'])->middleware('webmasterAdmin');
+Route::get('/edit-carous/{id}', [HomePageController::class, 'adminEditCarous'])->middleware('webmasterAdmin');
+Route::post('/update-image-carous/{id}', [HomePageController::class, 'adminUpdateImageCarous'])->middleware('webmasterAdmin');
+Route::get('/delete-carous/{id}', [HomePageController::class, 'adminDeleteImageCarous'])->middleware('webmasterAdmin');
 
 // Home Service Rapides
 Route::get('/services-rapides', [HomePageController::class, 'adminShowServicesRapides']);
@@ -102,7 +102,7 @@ Route::post('/update-ready/{id}', [HomePageController::class, 'adminUpdateReady'
 // Contacts
 Route::get('/contacts', [HomePageController::class, 'adminShowContact']);
 Route::post('/update-contacts/{id}', [HomePageController::class, 'adminUpdateContact']);
-Route::post('/store-contact', [MailController::class, 'store']);
+Route::post('/store-contact', [MailContactController::class, 'store']);
 
 // Footer
 Route::get('/footer', [HomePageController::class, 'adminShowFooter']);
