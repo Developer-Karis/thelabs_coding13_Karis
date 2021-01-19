@@ -74,9 +74,7 @@
 				@endif
 				@else
 				<li class="nav-item dropdown">
-					@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
-					<a href="{{ url('/home') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
-					@endif
+					<a href="{{ url('/profil') }}"><span class="text-capitalize">{{Auth::user()->name}}</span></a>
 					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
 						document.getElementById('logout-form').submit();">
 						{{ __('Logout') }}
@@ -236,7 +234,7 @@
 					<form action="/store-newsletter" method="POST" class="nl-form">
 						@csrf
 						<input type="text" placeholder="Your e-mail here" name="email">
-						<buatton type="submit" class="site-btn btn-2">Newsletter</button>
+						<button type="submit" class="site-btn btn-2">Newsletter</button>
 					</form>
 				</div>
 			</div>

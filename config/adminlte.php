@@ -241,18 +241,26 @@ return [
         ],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => '/profil',
             'icon' => 'fas fa-fw fa-user mr-2',
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => '/password',
             'icon' => 'fas fa-fw fa-lock mr-2',
         ],
-        ['header' => 'PARTIES DU SITE'],
+        [
+            'text' => 'Mail',
+            'url'  => '/mail',
+            'icon' => 'fas fa-envelope mr-2',
+        ],
+        [
+            'header' => 'PARTIES DU SITE',
+        ],
         [
             'text'    => 'Home',
             'icon'    => 'fas fa-cog fa-spin mr-2',
+            'can'     => 'membre',
             'submenu' => [
                 [
                     'text'    => 'Menu',
@@ -314,6 +322,7 @@ return [
         [
             'text'    => 'Services',
             'icon'    => 'fas fa-cog fa-spin mr-2',
+            'can'     => 'membre',
             'submenu' => [
                 [
                     'text'    => 'Bannière',
@@ -330,37 +339,44 @@ return [
                     'text'    => 'Bannière',
                     'url'     => '/banniereBlog',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                    'can'     => 'membre',
                 ],
                 [
                     'text'    => 'Articles',
                     'url'     => '/articles',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                    'can'     => 'redacteur',
                 ],
                 [
                     'text'    => 'Articles en attente',
                     'url'     => '/attente',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                    'can'     => 'web-admin',
                 ],
                 [
                     'text'    => 'Catégories',
                     'url'     => '/categories',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                    'can'     => 'membre',
                 ],
                 [
                     'text'    => 'Tags',
                     'url'     => '/tags',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                    'can'     => 'membre',
                 ],
                 [
                     'text'    => 'Newsletter',
                     'url'     => '/newsletter',
                     'icon'    => 'fas fa-long-arrow-alt-right mr-2',
+                    'can'     => 'membre',
                 ],
             ],
         ],
         [
             'text'    => 'Contact',
             'icon'    => 'fas fa-cog fa-spin mr-2',
+            'can'     => 'membre',
             'submenu' => [
                 [
                     'text'    => 'Bannière',

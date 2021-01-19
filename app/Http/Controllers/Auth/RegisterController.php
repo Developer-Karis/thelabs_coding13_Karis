@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Newsletter;
+use App\Mail\MailConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -53,6 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'photo' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -76,16 +79,23 @@ class RegisterController extends Controller
                 $index = -1;
             }
         }
-        if($index === -1){
-                $newEntry = new NewsLetter;
-                $newEntry->email = $data['email'];
-                $newEntry->save();
+        if ($mail->count() == 0) {
+            $newEntry = new NewsLetter;
+            $newEntry->email = $data['email'];
+            $newEntry->save();
+        } else if ($index === -1) {
+            $newEntry = new NewsLetter;
+            $newEntry->email = $data['email'];
+            $newEntry->save();
         }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'photo' => $data['photo']->hashName(),
+            $data['photo']->storePublicly('img/avatar/','public'),
             'password' => Hash::make($data['password']),
             'role_id'=> 4,
+            Mail::to('papadopouloskaris@gmail.com')->send(new MailConfirmation()),
         ]);
     }
 }

@@ -21,12 +21,15 @@
     <div class="col-4">
         <div class="card">
             <div class="card-header bg-teal">
-                <h5 class="text-dark font-weight-bold">Possède un compte et est inscrit à la Newsletter</h5>
+                <h5 class="text-dark font-weight-bold">Possède un compte</h5>
             </div>
             <div class="card-body">
                 <div class="form-group">
                     @foreach ($userInfos->unique('email') as $item)
+                    @if ($item->email == 'admin@admin.com' || $item->email == 'webmaster@webmaster.com'
+                    || $item->email == 'redacteur@redacteur.com' || $item->email == 'membre@membre.com')
                     <h5>{{$item->email}}</h5>
+                    @endif
                     @endforeach
                 </div>
             </div>
