@@ -74,12 +74,6 @@ class ProfilController extends Controller
     public function update(Request $request, Profil $profil, $id)
     {
         $updateProfil = User::find($id);
-
-        if ($updateProfil->photo != 'admin.png' || $updateProfil->photo != 'image.jpg' 
-        || $updateProfil->photo != 'multi.jpg' || $updateProfil->photo != 'naruto.jpg' ) {
-            Storage::disk('public')->delete('img/avatar/' . $updateProfil->photo);
-        }
-
         $updateProfil->photo = $request->file('changePhoto')->hashName();
         $updateProfil->name = $request->changeNom;
         $updateProfil->email = $request->changeEmail;

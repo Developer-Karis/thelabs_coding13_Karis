@@ -189,12 +189,6 @@ class HomePageController extends Controller
     public function adminUpdateLogoSlogan(HomePage $homePage, Request $request, $id) 
     {
         $updateLogoSlogan = Banner::find($id);
-
-        if ($updateLogoSlogan->logo != 'logo.png' || $updateLogoSlogan->logo != 'small-logo.png') {
-            Storage::disk('public')->delete('img/' . $updateLogoSlogan->logo);
-            Storage::disk('public')->delete('img/small-' . $updateLogoSlogan->logo);
-        }
-
         $updateLogoSlogan->logo = $request->file('updateImageLogo')->hashName();
         $updateLogoSlogan->slogan = $request->updateSlogan;
         $updateLogoSlogan->save();
