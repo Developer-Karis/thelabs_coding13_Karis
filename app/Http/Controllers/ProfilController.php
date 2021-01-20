@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\MailContact;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilController extends Controller
 {
@@ -73,7 +74,12 @@ class ProfilController extends Controller
     public function update(Request $request, Profil $profil, $id)
     {
         $updateProfil = User::find($id);
-        Storage::disk('public')->delete('img/avatar/' . $updateProfil->photo);
+
+        if ($updateProfil->photo != 'admin.png' || $updateProfil->photo != 'image.jpg' 
+        || $updateProfil->photo != 'multi.jpg' || $updateProfil->photo != 'naruto.jpg' ) {
+            Storage::disk('public')->delete('img/avatar/' . $updateProfil->photo);
+        }
+
         $updateProfil->photo = $request->file('changePhoto')->hashName();
         $updateProfil->name = $request->changeNom;
         $updateProfil->email = $request->changeEmail;
@@ -96,6 +102,17 @@ class ProfilController extends Controller
     public function password(Profil $profil) 
     {
         return view('admin.profil.password');
+    }
+
+    public function changePassword(Profil $profil, Request $request, $id) 
+    {
+        $updatePassword = User::find($id);
+        if ($updatePassword->password !== $request->password) {
+            $updatePassword->password = Hash::make($request->password);
+        }
+
+        $updatePassword->save();
+        return redirect()->route("login");
     }
 
     public function mail(Profil $profil) 

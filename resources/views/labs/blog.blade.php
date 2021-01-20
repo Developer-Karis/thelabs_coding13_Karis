@@ -37,7 +37,6 @@
 		</div>
 	</div>
 
-
 	<!-- Header section -->
 	<header class="header-section">
 		<div class="logo">

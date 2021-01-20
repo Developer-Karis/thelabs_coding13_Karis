@@ -155,6 +155,7 @@ Route::get('/profil', [ProfilController::class, 'index'])->middleware('auth');
 Route::get('/password', [ProfilController::class, 'password'])->middleware('auth');
 Route::post('/update-profil/{id}', [ProfilController::class, 'update'])->middleware('auth');
 Route::get('/mail', [ProfilController::class, 'mail']);
+Route::post('/changePassword/{id}', [ProfilController::class, 'changePassword']);
 
 
 

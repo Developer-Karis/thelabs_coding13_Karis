@@ -28,13 +28,13 @@
 </head>
 
 <body>
-	{{-- <!-- Page Preloder -->
+	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader">
 			<img src="{{asset('img/logo.png')}}" alt="">
-	<h2>Loading.....</h2>
+			<h2>Loading.....</h2>
+		</div>
 	</div>
-	</div> --}}
 
 
 	<!-- Header section -->
@@ -152,7 +152,11 @@
 							<ul class="comment-list">
 								<li>
 									<div class="avatar">
+										@if ($elem->photo_profil == '01.jpg' || $elem->photo_profil == '02.jpg')
 										<img src="{{asset('img/avatar/'.$elem->photo_profil)}}" alt="">
+										@else
+										<img src="{{asset('img/avatar/'.Auth::user()->photo)}}" alt="">
+										@endif
 									</div>
 									<div class="commetn-text">
 										<h3>{{$elem->fullname . ' |'}} {{$elem->title}}</h3>

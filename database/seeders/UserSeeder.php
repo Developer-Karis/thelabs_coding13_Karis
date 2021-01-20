@@ -19,24 +19,28 @@ class UserSeeder extends Seeder
             [
                 'name' => "Admin",
                 'email' => "admin@admin.com",
+                'photo' => 'admin.png',
                 'role_id' => 1,
                 'password' => Hash::make('admin@admin.com'),
             ],
             [
                 'name' => "Webmaster",
                 'email' => "webmaster@webmaster.com",
+                'photo' => 'image.png',
                 'role_id' => 2,
                 'password' => Hash::make('webmaster@webmaster.com'),
             ],
             [
                 'name' => "Redacteur",
                 'email' => "redacteur@redacteur.com",
+                'photo' => 'naruto.png',
                 'role_id' => 3,
                 'password' => Hash::make('redacteur@redacteur.com'),
             ],
             [
                 'name' => "Membre",
                 'email' => "membre@membre.com",
+                'photo' => 'multi.png',
                 'role_id' => 4,
                 'password' => Hash::make('membre@membre.com'),
             ],

@@ -46,7 +46,7 @@ class BlogPostController extends Controller
     public function store(Request $request)
     {
         $commentary = new Commentary();
-        $commentary->photo_profil = '01.jpg';
+        $commentary->photo_profil = Auth::user()->photo;
         $commentary->fullname = Auth::user()->name;
         $dateToday = new DateTime();
         $date = $dateToday->format('Y-m-d') . ' | Reply';
