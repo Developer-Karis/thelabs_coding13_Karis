@@ -23,7 +23,8 @@ class CommentarySeeder extends Seeder
                 'message' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. 
                 Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
 
-                'article_id' => 1
+                'article_id' => 1,
+                'user_id' => 1
             ],
             [
                 'photo_profil' => '02.jpg',
@@ -33,7 +34,8 @@ class CommentarySeeder extends Seeder
                 'message' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. 
                 Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
 
-                'article_id' => 1
+                'article_id' => 1,
+                'user_id' => 1
             ],
             [
                 'photo_profil' => '01.jpg',
@@ -43,7 +45,8 @@ class CommentarySeeder extends Seeder
                 'message' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. 
                 Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
 
-                'article_id' => 2
+                'article_id' => 2,
+                'user_id' => 2
             ],
             [
                 'photo_profil' => '02.jpg',
@@ -53,7 +56,8 @@ class CommentarySeeder extends Seeder
                 'message' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. 
                 Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
 
-                'article_id' => 2
+                'article_id' => 2,
+                'user_id' => 2
             ],
             [
                 'photo_profil' => '01.jpg',
@@ -63,7 +67,8 @@ class CommentarySeeder extends Seeder
                 'message' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. 
                 Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
 
-                'article_id' => 3
+                'article_id' => 3,
+                'user_id' => 3
             ],
             [
                 'photo_profil' => '02.jpg',
@@ -73,7 +78,8 @@ class CommentarySeeder extends Seeder
                 'message' => 'Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. 
                 Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique.',
 
-                'article_id' => 3
+                'article_id' => 3,
+                'user_id' => 3
             ],
         ]);
     }

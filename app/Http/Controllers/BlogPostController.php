@@ -53,6 +53,7 @@ class BlogPostController extends Controller
         $commentary->title = $date;
         $commentary->message = $request->message;
         $commentary->article_id = $request->article_id;
+        $commentary->user_id = Auth::user()->id;
         $commentary->save();
         return redirect()->back();
     }

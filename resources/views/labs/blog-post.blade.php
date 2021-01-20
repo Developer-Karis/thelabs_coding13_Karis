@@ -155,7 +155,7 @@
 										@if ($elem->photo_profil == '01.jpg' || $elem->photo_profil == '02.jpg')
 										<img src="{{asset('img/avatar/'.$elem->photo_profil)}}" alt="">
 										@else
-										<img src="{{asset('img/avatar/'.Auth::user()->photo)}}" alt="">
+										<img src="{{asset('img/avatar/'.$elem->users->photo)}}" alt="">
 										@endif
 									</div>
 									<div class="commetn-text">
